@@ -1,27 +1,35 @@
 #include <stdio.h>
 #include <vector>
 using namespace std;
+
 int main()
 {
 	freopen("input.txt","rt",stdin);
-	int num, i, j, pos;
-	scanf("%d", &num);
-	vector<int> is(num + 1), os(num + 1); //1번부터 컨트롤하기 위해 + 1
+	int num1, num2, i, j, p1 = 1, p2 = 1, p3 = 1;
+	vector<int> arr1(101), arr2(101), arr3(300);
+	scanf("%d", &num1);
+	for (i = 0; i < num1; i++)
+		scanf("%d", &arr1[i]);
+	scanf("%d", &num2);
+	for (i = 0; i < num2; i++)
+		scanf("%d", &arr2[i]);
 	
-	for (i = 1; i <= num; i++)
-		scanf("%d", &is[i]);
-	for (i = num; i >= 1; i--)
-	{	
-		pos = i;
-		for (j = 1; j <= is[i]; j++)
+	while (p1 < num1 && p2 < num2)
+	{
+		if (arr1[p1] > arr2[p2])
 		{
-			os[pos] = os[pos + 1];
-			pos++;
+			arr3[p3++] = arr2[p2++];
 		}
-		os[pos] = i;
+		else
+		{
+			arr3[p3++] = arr1[p1++];
+		}
 	}
-	for (i = 1; i <= num; i++)
-		printf("%d ", os[i]);
+	while (p1 < num1)
+		arr3[p3++] = arr1[p1++];
+	while (p2 < num2)
+		arr3[p3++] = arr2[p2++];
+	for (i = 0; i < p3; i++)
+		printf("%d ", arr3[i]);
 	return (0);
 }
-
