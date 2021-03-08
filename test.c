@@ -1,56 +1,27 @@
 #include <stdio.h>
-#include <limits.h>
+#include <vector>
+using namespace std;
 int main()
 {
 	freopen("input.txt","rt",stdin);
-	int num, i, j, res, count;
-	int temp[100];
+	int num, i, j, pos;
 	scanf("%d", &num);
+	vector<int> is(num + 1), os(num + 1); //1번부터 컨트롤하기 위해 + 1
 	
-	i = 0;
-	while (i < num)
-		scanf("%d", &temp[i++]);
-
-	i = 0;
-	while (temp[i] != '\0')
-	{
-		j = i + 1;
-		while (temp[j] != '\0')
+	for (i = 1; i <= num; i++)
+		scanf("%d", &is[i]);
+	for (i = num; i >= 1; i--)
+	{	
+		pos = i;
+		for (j = 1; j <= is[i]; j++)
 		{
-			if (temp[i] < temp[j])
-			{
-				res = temp[j];
-				temp[j] = temp[i];
-				temp[i] = res;
-			}
-			j++;
+			os[pos] = os[pos + 1];
+			pos++;
 		}
-		i++;
+		os[pos] = i;
 	}
-
-	i = 0;
-	count = 1;
-	while (temp[i] != '\0')
-	{
-		j = i + 1;
-		while (temp[j] != '\0')
-		{
-			if (temp[i] == temp[j])
-				j++;
-			else if (temp[i] > temp[j])
-			{
-				count++;
-				i++;
-				break;
-			}
-		}
-		if (count == 3)
-		{
-			res = temp[j];
-			break;
-		}
-	}
-	printf("%d", res);
+	for (i = 1; i <= num; i++)
+		printf("%d ", os[i]);
 	return (0);
 }
 
