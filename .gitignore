@@ -1,5 +1,5 @@
-.test
-.test.c
-.input.txt
+test
+test.c
+input.txt
 /.vscode
-test.dsYM/
+/test.dsYM
