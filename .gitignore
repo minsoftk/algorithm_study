@@ -1,4 +1,5 @@
 .test
 .test.c
 .input.txt
-./.vscode
+/.vscode
+test.dsYM/
