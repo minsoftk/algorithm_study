@@ -27,6 +27,9 @@ https://programmers.co.kr/learn/courses/30/lessons/42840?language=cpp
 | [1,2,3,4,5] |   [1]   |
 | [1,3,2,4,2] | [1,2,3] |
 
+<br/>
+<br/>
+
 ### 나의 알고리즘 풀이😂
 
 - 각각의 패턴을 저장해놓고, 모듈러를 이용해 문제의 정답을 맞췄을 경우, 각각의 수포자의 int 배열을 +1 해줬다. 그 후 int 배열 s에서 최대값을 찾아 저장하고 max_score에 max 값을 저장한다. 그 후 max_score와 같다면 answer에 push_back해준다.i = 0부터여서 오름차순 정렬로 들어간다.
