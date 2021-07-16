@@ -1,36 +1,16 @@
 #  알고리즘
-1. [인프런 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98#)를 공부하면서 각각의 자료구조 활용법을 기록한 repository입니다. 
+1. C/C++ 강의 알고리즘 
 2. 프로그래머스 알고리즘 풀이를 올립니다.
-3. 백준 알고리즘 풀이를 올립니다. (Solved.ac 티어 기준)
+3. 백준 알고리즘 풀이를 올립니다. (Solved.ac 티어 기준 작성)
 
-## [C/C++ 알고리즘 목차]()
-36. 삽입정렬  
-43, 44. 이분검색 응용 
-51. 다이나믹 
-56. 재귀
-58. 이진트리 깊이우선탐색 
-65. STL vector 생성방법 
-66. DFS 인접리스트 (벡터활용) 즘 
-67. DFS 인접행렬 
-68. DFS 가중치 방향그래프 인접리스트 즘 
-69. BFS 이진트리 넓이 우선탐색 
-70. BFS 그래프 최단거리 
-71. BFS 상태트리 검색 
-72. 최대 Heap 구조와 유사하게 운영이되는  Priority_queue
-75. 최대 수입 스케쥴
-76. 이항계수 메모리제이션 
-77. disjoint-set
-78. 크루스칼 알고리즘 트리의 최소비용 최소 스패닝트리에 대하여
-79. Prim MST 알고리즘 최소스패닝 트리, 정점 기준으로 추가해나간다. 반복해볼것
-80. 다익스트라 알고리즘
-81. 벨만-포드 알고리즘
-82. 순열구하기 (DFS : Depth First Search) 
-
-## 프로그래머스 알고리즘
+## C/C++ 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/C%20%26%20C%2B%2B)
 
 
+## 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
 
-## 백준 알고리즘
+## 백준 알고리즘 👉[Link]()
+
+## leetcode 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/leetcode)
 
 ※ 다음은 백준사이트의 문제입니다. 형식 : 문제번호(문제제목)
 
