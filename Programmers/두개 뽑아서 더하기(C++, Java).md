@@ -66,24 +66,7 @@ class Solution {
 ```
 
 ```c++
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
+
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -102,6 +85,8 @@ vector<int> solution(vector<int> numbers) {
     return answer;
 }
 ```
+
+## 최적의 알고리즘
 
 ```java
 import java.util.*;
