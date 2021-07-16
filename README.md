@@ -1,7 +1,7 @@
 #  알고리즘
-* 1. [인프런 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98#)를 공부하면서 각각의 자료구조 활용법을 기록한 repository입니다. 
-* 2. 프로그래머스 알고리즘 풀이를 올립니다.
-* 3. 백준 알고리즘 풀이를 올립니다. (Solved.ac 티어 기준)
+1. [인프런 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98#)를 공부하면서 각각의 자료구조 활용법을 기록한 repository입니다. 
+2. 프로그래머스 알고리즘 풀이를 올립니다.
+3. 백준 알고리즘 풀이를 올립니다. (Solved.ac 티어 기준)
 
 ## [C/C++ 알고리즘 목차]()
 36. 삽입정렬  
