@@ -3,7 +3,7 @@
 2. 프로그래머스 알고리즘 풀이를 올립니다.
 3. 백준 알고리즘 풀이를 올립니다. (Solved.ac 티어 기준 작성)
 
-## C/C++ 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q)
+## C/C++ 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/C%20%26%20C%2B%2B)
 
 
 ## 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
