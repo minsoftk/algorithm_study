@@ -9,6 +9,7 @@
 ## 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
 
 ## 백준 알고리즘 👉[Link]()
+* Solved.ac Level 기준
 
 ## leetcode 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/leetcode)
 
