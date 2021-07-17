@@ -3,5 +3,7 @@ test.c
 input.txt
 /.vscode
 /test.dsYM
-/Programmers/00. 양식.md
+00. 양식.md
 /Python문법
+
+# git rm -r --cached . 
