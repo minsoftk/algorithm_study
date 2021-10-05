@@ -6,29 +6,23 @@
 	<body>
 		<script>
 			function solution(str) {
-				let answer;
-				let numbers = [
-					'zero',
-					'one',
-					'two',
-					'three',
-					'four',
-					'five',
-					'six',
-					'seven',
-					'eight',
-					'nine',
-					'ten',
-				];
-				for (let i = 0; i <= 9; i++) {
-					let tmp = str.split(numbers[i]);
-					console.log(tmp);
-					str = tmp.join(i);
+				let answer = '';
+				let hash = new Map();
+				for (let x of str) {
+					console.log(hash.get(x));
+					hash.set(x, (hash.get(x) || 0) + 1);
 				}
-				answer = parseInt(str);
+				let max = Number.MIN_SAFE_INTEGER;
+				for (let [key, val] of hash) {
+					if (val > max) {
+						max = val;
+						answer = key;
+					}
+				}
+				hash.get(max);
 				return answer;
 			}
-			console.log(solution('23four5sixoneone7'));
+			console.log(solution('BACBACCACCBDEDE'));
 		</script>
 	</body>
 </html>
