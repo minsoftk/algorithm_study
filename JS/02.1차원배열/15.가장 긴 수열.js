@@ -1,12 +1,31 @@
-function solution(arr) {
-	let answer = 'YES';
-	let n = nums.length;
-	let i = 0;
-	while (i + 1 < n && nums[i] < num[i + 1]) i++;
-	if (i === 0 || i === n - 1) answer = 'NO';
-	while (i + 1 < n && nums[i] > nums[i + 1]) i++;
-	if (i !== n - 1) answer = 'NO';
+function solution(nums) {
+	let answer;
+	let minus_cnt = 1;
+	let plus_cnt = 1;
+	let p_max = -2147000000;
+	let m_max = -2147000000;
+	for (let i = 1; i < nums.length; i++) {
+		if (nums[i - 1] < nums[i]) {
+			plus_cnt++;
+		} else {
+			p_max = Math.max(p_max, plus_cnt);
+			plus_cnt = 1;
+		}
+		if (nums[i - 1] > nums[i]) {
+			minus_cnt++;
+		} else {
+			m_max = Math.max(m_max, minus_cnt);
+			minus_cnt = 1;
+		}
+		p_max = Math.max(p_max, plus_cnt);
+		m_max = Math.max(m_max, minus_cnt);
+		answer = Math.max(p_max, m_max);
+	}
+
 	return answer;
 }
 
-console.log(solution([5, 2, 4, 7, 7, 3, 9, 10, 11]));
+console.log(solution([5, 3, 6, 7, 9, 8, 5, 3, 1, 2]));
+console.log(
+	solution([1, 2, 3, 3, 4, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+);
