@@ -5,5 +5,5 @@ input.txt
 /test.dsYM
 00. 양식.md
 /Python문법
-./C & C++
+C++
 # git rm -r --cached . 
