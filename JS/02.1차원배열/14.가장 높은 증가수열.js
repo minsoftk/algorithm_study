@@ -1,6 +1,5 @@
-- 가장 높은 차를 누적하는 문제.
+// - 가장 높은 차를 누적하는 문제.
 
-```js
 function solution(arr) {
 	let answer = 0;
 	let height = 0;
@@ -17,4 +16,3 @@ function solution(arr) {
 }
 
 console.log(solution([5, 2, 4, 7, 7, 3, 9, 10, 11]));
-```

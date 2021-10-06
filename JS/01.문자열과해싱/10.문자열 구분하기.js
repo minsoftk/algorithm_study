@@ -1,6 +1,3 @@
-- 자바스크립트에선 sorting을 안해도 오류가 나진 않는다.
-
-```js
 function solution(s) {
 	let answer, i;
 	for (i = 0; i < s[0].length; i++) {
@@ -23,4 +20,3 @@ function solution(s) {
 console.log(solution(['seeasue', 'sesseysu', 'semeas']));
 // console.log(solution(['ackky', 'kabck', 'yokkcs']));
 // console.log(solution(['longlong', 'longtong', 'longbig']));
-```

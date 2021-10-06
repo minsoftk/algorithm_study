@@ -1,15 +1,8 @@
-function solution(s, m) {
+function solution(nums) {
 	let answer;
-	for (let i = m; i > 0; i--) {
-		for (let j = 1; j < s.length; j++) {
-			s[j - 1] = s[j] - s[j - 1];
-		}
-	}
-	s = s.slice(0, s.length - m);
-	console.log(s);
-
+	for (let i = 0; i < nums.length; i++) {}
 	return answer;
 }
 
-console.log(solution([5, 3, 7, 9, -2], 1));
-console.log(solution([5, 3, 7, 9, -2], 2));
+console.log(solution([5, 2, 4, 7, 7, 3, 9, 10, 11]));
+console.log(solution([8, 12, 2, 3, 7, 6, 20, 3]));

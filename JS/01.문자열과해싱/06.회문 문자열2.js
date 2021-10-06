@@ -1,16 +1,3 @@
-### 1.6. 회문 문자열2
-
-```javascript
-str.substring(indexStart[, indexEnd])
-```
-
-- indexStart : 반환 문자열의 시작 인덱스
-- indexEnd : 옵션. 반환 문자열의 마지막 인덱스 (포함하지 않음.)
-- 풀이
-
-내 코드에서 문제점은 while문을 빠져나가는 명령어가 필요했는데, "NO"인 경우에 대해 생각을 해주지 못했다. 따라서 `left`, `right` idx 변경도 없기 때문에 무한 루프에 빠져버렸다. 따라서 아래 풀이와 같이 temp === s
-
-```js
 function solution(str) {
 	let answer = 'YES';
 	let left = 0,
@@ -36,4 +23,3 @@ function solution(str) {
 	return answer;
 }
 console.log(solution('abcabbakcba'));
-```

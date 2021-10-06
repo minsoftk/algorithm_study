@@ -1,8 +1,3 @@
-### 1.5. 특정 문자 뒤집기
-
-- 풀이
-
-```javascript
 function solution(str) {
 	str = str.split('');
 	const isAlpha = /[a-zA-Z]/;
@@ -22,10 +17,8 @@ function solution(str) {
 	return str;
 }
 console.log(solution('a#b!GE*T@S'));
-```
 
-```js
-function solution(str) {
+function solution2(str) {
 	const isAlpha = /[a-zA-Z]/;
 	str = str.split('');
 	console.log(str);
@@ -47,7 +40,3 @@ function solution(str) {
 	return str.join('');
 }
 console.log(solution('a#b!GE*T@S'));
-```
-
-let answer = "YES"; str = str.toLowerCase(); if
-(str.split('').reverse().join('')!=str) return "NO"; return answer;

@@ -1,4 +1,3 @@
-```js
 function solution(arr) {
 	let answer = 'YES';
 	let n = nums.length;
@@ -11,4 +10,3 @@ function solution(arr) {
 }
 
 console.log(solution([5, 2, 4, 7, 7, 3, 9, 10, 11]));
-```
