@@ -14,7 +14,6 @@ function solution(arr) {
 			hash.set(key, Math.min(value, hash2.get(key)) || 0);
 		}
 	}
-
 	return arr;
 }
 
