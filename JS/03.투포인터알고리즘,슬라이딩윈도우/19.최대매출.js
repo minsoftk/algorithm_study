@@ -7,7 +7,10 @@ function solution(nums, k) {
 	for (let i = 0; i < nums.length; i++) {
 		sum += nums[i];
 		end++;
+		// 만약 end, start 거리가 k 보다 커지면
+		//슬라이딩 윈도우
 		if (end - start > k) {
+			// start의 값을 빼주고 idx ++
 			sum -= nums[start];
 			start++;
 			max = Math.max(max, sum);

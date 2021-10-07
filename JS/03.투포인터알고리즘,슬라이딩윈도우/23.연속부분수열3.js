@@ -1,16 +1,21 @@
-// right -left + 1
-
 function solution(nums, m) {
-	let answer;
-	let arr = [];
-	for (let i = 0; i < nums.length; i++) {
-		arr[i] = i;
+	let left = 0,
+		sum = 0,
+		answer = 0;
+
+	for (let right = 0; right < nums.length; right++) {
+		// sum에 right idx 값 더해주며 +1 증가시킨다.
+		sum += nums[right];
+		// sum이 m보다 커지면 left idx값 빼주고, 증가시킨다.
+		while (sum > m) {
+			sum -= nums[left++];
+		}
+		//정확한 원리?
+		answer += right - left + 1;
 	}
-	console.log(arr);
 	return answer;
 }
 
-console.log(solution([1, 0, 0, 0, 1, 0, 0, 1, 0, 1]));
-//10
-//15
-//22
+console.log(solution([1, 3, 1, 2, 3], 5)); //10
+console.log(solution([1, 1, 1, 1, 1, 1], 3)); //15
+console.log(solution([1, 1, 2, 2, 1, 2, 1, 3, 2], 5)); //22
