@@ -1,4 +1,3 @@
-```js
 function solution(str1, str2) {
 	let answer = 'YES';
 	let temp;
@@ -24,4 +23,3 @@ function solution(str1, str2) {
 	}
 	return answer;
 }
-```

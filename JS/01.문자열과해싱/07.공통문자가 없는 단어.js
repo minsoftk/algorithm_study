@@ -1,4 +1,3 @@
-```js
 function solution(str) {
 	let answer = 0;
 	str.sort((a, b) => a.length - b.length);
@@ -19,4 +18,3 @@ function solution(str) {
 	return answer;
 }
 console.log(solution(['skudy', 'kstue', 'time', 'back', 'good']));
-```

@@ -1,4 +1,3 @@
-```js
 function solution(str) {
 	let answer = '';
 	for (let x of str) {
@@ -13,4 +12,3 @@ function solution2(str) {
 	return pasrseInt(answer);
 }
 console.log(solution('tge0a1h205er'));
-```

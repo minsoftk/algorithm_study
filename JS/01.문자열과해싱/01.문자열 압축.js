@@ -1,4 +1,3 @@
-```js
 function solution(str) {
 	let answer = '';
 	let cnt = 1;
@@ -14,4 +13,3 @@ function solution(str) {
 	return answer;
 }
 console.log(solution(KKHSSSSSSSE));
-```

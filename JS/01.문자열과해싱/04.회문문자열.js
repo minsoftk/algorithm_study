@@ -1,4 +1,3 @@
-```js
 function solution(str) {
 	str = str.toLowerCase();
 	let flag = true;
@@ -10,11 +9,10 @@ function solution(str) {
 	else return 'YES';
 }
 console.log(solution('GgooGg'));
-```
 
 ```js
 let answer = 'YES';
 str = str.toLowerCase();
 if (str.split('').reverse().join('') != str) return 'NO';
 return answer;
-```
+```;

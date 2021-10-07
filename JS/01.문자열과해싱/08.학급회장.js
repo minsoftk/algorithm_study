@@ -1,4 +1,3 @@
-```js
 function solution(str) {
 	let answer;
 	let hash = new Map();
@@ -15,4 +14,3 @@ function solution(str) {
 	return answer;
 }
 console.log(solution('BACBACCACCBDEDE'));
-```
