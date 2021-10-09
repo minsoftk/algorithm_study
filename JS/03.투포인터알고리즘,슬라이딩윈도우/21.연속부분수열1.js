@@ -1,6 +1,5 @@
 function solution(nums, m) {
 	let left = 0,
-		right = 0,
 		sum = 0,
 		answer = 0;
 
