@@ -14,7 +14,7 @@ function solution(s, m) {
 	*/
 	let len = m.length - 1;
 	for (let i = 0; i < len; i++) {
-		// 1,2번째 해시에 등록
+		//  1~(비교할 문자열의 길이 -1)
 		hash.set(s[i], (hash.get(s[i]) || 0) + 1);
 		if (hash.get(s[i]) === 0) hash.delete(s[i]);
 	}
