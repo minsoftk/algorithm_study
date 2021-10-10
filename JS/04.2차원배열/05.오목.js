@@ -2,29 +2,41 @@
 function solution(board) {
 	let answer = 0;
 	let map = Array(21).fill(0);
+	for (let i = 0; i < map.length; i++) {
+		map[i] = Array(21).fill(0);
+	}
 	for (let i = 1; i <= 19; i++) {
 		for (let j = 1; j <= 19; j++) {
 			map[i][j] = board[i - 1][j - 1];
 		}
 	}
-	console.log(board[3][2]);
 
 	let dx = [-1, 0, 1, 1];
 	let dy = [1, 1, 1, 0];
 	//방향 설정하기
 	for (let i = 1; i <= 19; i++) {
 		for (let j = 1; j <= 19; j++) {
-			if (map[i][j] !== 1 && map[i][j] !== 2) {
-				let cnt = 1;
+			// 공백이 아닌 검은 바둑알 1, 흰 바둑알 2
+			if (map[i][j] !== 0) {
+				// 오른쪽 윗대각선, 오른쪽, 오른쪽 아랫대각선, 아래 방향만 탐색한다.
 				for (let k = 0; k < 4; k++) {
-					if (map[i - dx[k]][j - dy[k]] !== board[i][j]) {
+					let cnt = 1;
+					let xx = i; // 방향 탐색을 위해 i 인덱스를 xx에 저장
+					let yy = j; // 방향 탐색을 위해 j 인덱스를 yy에 저장
+
+					// 이전 방향의 바둑알과 현재 바둑알이 일치하지 않는지 확인해야 한다.
+					if (map[i - dx[k]][j - dy[k]] !== map[i][j]) {
+						// 일정한 k 값, 즉 한 방향으로 바둑알의 개수를 센다.
 						while (true) {
-							xx = i + dx[k];
-							yy = j + dy[k];
-							if (map[xx][yy] === board[i][j]) cnt++;
-							else break;
+							xx = xx + dx[k];
+							yy = yy + dy[k];
+							// 만약 바둑알이 같다면 cnt++
+							if (map[xx][yy] === map[i][j]) cnt++;
+							else break; // 바둑알이 일치 하지 않는다면 loop break;
 						}
 					}
+					// 한 방향으로 탐색했을 때, 바둑알이 5개라면 승리
+					// 현재 바둑알을 answer에 입력
 					if (cnt === 5) {
 						answer = map[i][j];
 						return answer;

@@ -3,45 +3,69 @@
 //
 function solution(board, nums) {
 	let answer = 0;
-	let arr = Array(board.length);
-	for (let i = 0; i < 2; i++) {
-		arr[i] = Array(25).fill(0);
+	let sum = 0;
+	// 빙고를 파악하기 위한 check 변수
+	// 대각선, 가로, 세로
+	let c1, c2, c3, c4;
+
+	// board 요소를 간단하게 불러오기 위한 배열
+	let preview_board = Array(2).fill(0);
+	for (let i = 0; i < preview_board.length; i++) {
+		preview_board[i] = Array(board.length).fill(0);
 	}
 
-	console.log(arr);
+	// 임시 board 생성
+	let map = Array(board.length);
+	for (let i = 0; i < board.length; i++) {
+		map[i] = Array(board.length).fill(0);
+	}
+
+	// board 요소를 입력
 	for (let i = 0; i < board.length; i++) {
 		for (let j = 0; j < board.length; j++) {
-			arr;
+			let temp = board[i][j];
+			preview_board[0][temp] = i;
+			preview_board[1][temp] = j;
 		}
 	}
 
-	return answer;
-	// 불러진 숫자 삭제
-	// let len = nums.length;
-	// while (len--) {
-	// 	for (let i = 0; i < board.length; i++) {
-	// 		let temp = 0;
-	// 		let flag = true;
-	// 		for (let j = 0; j < board.length; j++) {
-	// 			//nums와 같은걸 찾았을 때, 0으로 만들어주기.
-	// 			if (nums[temp] === m[i][j]) {
-	// 				m[i][j] = 0;
-	// 				temp = j;
-	// 			}
-	// 		}
-	// 		// 삭제후 i, j에 상하좌우, 대각선 flag 확인해주기
-	// 		let cnt = 0;
-	// 		for (let x = 0; x < m.length; x++) {
-	// 			if (m[i][x] === 0) flag = false;
-	// 			if (m[x][j])
-	// 			if (m[x][temp] !== 0) flag = false;
-	// 			if (m[x][x] !== 0) {
-	// 				flag = false;
-	// 			}
-	// 		}
-	// 		if (flag)
-	// 	}
-	// }
+	// 임시 board에 빙고 시작
+	for (let j = 0; j < nums.length; j++) {
+		let x = nums[j];
+		// 사회자가 불러준 숫자 0으로 변경
+		map[preview_board[0][x]][preview_board[1][x]] = 1;
+
+		// 빙고 0으로 초기화
+		c1 = c2 = c3 = c4 = 1;
+
+		// 대각선의 경우, preview[0][x] = preview_board[1][x] 같다면 대각선 확인
+		if (preview_board[0][x] === preview_board[1][x]) {
+			// 대각선의 요소들을 임시 board 변수인 map에서 모두 0인지 확인.
+			for (let k = 0; k < map.length; k++) {
+				// 모두 0이라면 빙고이므로 c1 = 0
+				if (map[k][k] === 0) c1 = 0;
+			}
+		} else c1 = 0; // ????
+
+		// 오른쪽에서 왼쪽 방향의 대각선 check, c2에 저장
+		if (preview_board[0][x] + preview_board[1][x] === board.length - 1) {
+			for (let k = 0; k < map.length; k++) {
+				if (map[k][map.length - 1 - k] === 0) c2 = 0;
+			}
+		} else c2 = 0;
+
+		for (let k = 0; k < map.length; k++) {
+			if (map[preview_board[0][x]][k] === 0) c3 = 0;
+			if (map[k][preview_board[1][x]] === 0) c4 = 0;
+		}
+		sum += c1 + c2 + c3 + c4;
+		console.log('j', j);
+		if (sum >= 3) {
+			answer = j + 1;
+			console.log('j', j);
+			break;
+		}
+	}
 	return answer;
 }
 
