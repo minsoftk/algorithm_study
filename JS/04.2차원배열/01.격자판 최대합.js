@@ -1,8 +1,8 @@
 function solution(arr) {
 	let answer = 0;
 	let max = -2147000000,
-		row = 0,
-		col = 0;
+		row,
+		col;
 	cross = 0;
 	for (let i = 0; i < arr.length; i++) {
 		row = 0;

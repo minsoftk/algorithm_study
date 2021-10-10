@@ -7,6 +7,7 @@ function solution(s, m) {
 		if (max < s[i]) max = s[i];
 		if (min > s[i]) min = s[i];
 	}
+
 	for (let i = 0; i <= max; i++) {
 		arr[s[i]] += 1;
 	}

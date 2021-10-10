@@ -1,43 +1,41 @@
-function solution(nums, k) {
+function solution(map) {
 	let answer = 0;
-	let hash = new Map();
+
 	let cnt = 0;
+	let max = -2147000000;
 
-	let left = 0;
-	for (let right = 0; right < nums.length; right++) {
-		hash.set(nums[right], (hash.get(right) || 0) + 1);
+	for (let i = 0; i < map.length; i++) {
+		for (let j = 0; j < map.length; j++) {
+			// 비교가 끝날 때마다 cnt = 0으로 초기화 해준다.
+			cnt = 0;
 
-		// 해시의 홀수의 개수 판단
-		cnt = 0;
-		let total_key = 0;
-		for (let [key, val] of hash) {
-			if (key % 2 == 1 && val >= 1) {
-				cnt += val;
-				total_key++;
+			// i번째 학생 j 번째 학생과 비교해 같은 반이었던 학생 수를 세준다.
+			// 같은 반이었던 학생을 찾는 것이므로 한번이라도 같은 반이었다면 break를 해준다.
+			for (let k = 0; k < map.length; k++) {
+				if (map[i][k] === map[j][k]) {
+					cnt++;
+					break;
+				}
 			}
 		}
 
-		//홀수의 총 val이 ghftnfkaus
-		if (cnt % 2 == 1) answer++;
-		//1.
-		// cnt가 0일때 홀수 k개
-		// if (nums[left] % 2 == 1) hash.set(nums[left], (hash.get(left) || 0) + 1);
-		// if (total_key >= k) hash.set(nums[left], (hash.get(left) || 0) - 1);
-		// left++;
-
-		//2.
-		//만약 k보다 많다면 left 해시 값 빼주고 idx 증가
-		if (total_key >= k) hash.set(nums[left], (hash.get(nums[left]) || 0) - 1);
-
-		//3.
-		//홀수개의 개수가 k보다 작아질 때까지 해시 -1 해주기
-
-		left++;
+		// cnt > max라면 같은 반 학생 수가 가장 많으므로 cnt를 입력해준다.
+		// i번째 학생 기준이므로 answer에 i를 입력해준다.
+		if (cnt > max) {
+			max = cnt;
+			answer = i;
+		}
 	}
-
-	return answer;
+	// i번째 학생 return, 0부터 시작하므로 +1
+	return answer + 1;
 }
 
-console.log(solution([1, 2, 1, 1, 2], 2)); //5
-console.log(solution([2, 2, 2, 1, 2, 2, 1, 2, 2, 2], 2)); //16
-console.log(solution([2, 4, 6], 1)); //0
+console.log(
+	solution([
+		[2, 3, 1, 7, 3],
+		[4, 1, 9, 6, 8],
+		[5, 5, 2, 4, 4],
+		[6, 5, 2, 6, 7],
+		[8, 4, 2, 2, 2],
+	])
+); // 4

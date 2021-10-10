@@ -23,22 +23,23 @@ console.log(solution([1, 2, 1, 2, 1, 2, 1], 3));
 
 // 첫 소스 코드
 
-/**	// while (start <= end && end <= nums.length) {
-	// 	if (sum === k) {
-	// 		cnt++;
-	// 		sum -= nums[start];
-	// 		start++;
-	// 	} else if (sum > k && start <= end) {
-	// 		// 만약 1 1 1 3 100 경우?
-	// 		//앞에 원소 빼준다.
-	// 		sum -= nums[start];
-	// 		start++;
-	// 	} else {
-	// 		//뒤에 원소 추가 해준다.
-	// 		sum += nums[end];
-	// 		end++;
-	// 	}
-	// }
+/**
+ 	while (start <= end && end <= nums.length) {
+		if (sum === k) {
+			cnt++;
+			sum -= nums[start];
+			start++;
+		} else if (sum > k && start <= end) {
+			// 만약 1 1 1 3 100 경우?
+			//앞에 원소 빼준다.
+			sum -= nums[start];
+			start++;
+		} else {
+			//뒤에 원소 추가 해준다.
+			sum += nums[end];
+			end++;
+		}
+	}
  
 
  */
