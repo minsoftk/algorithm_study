@@ -2,6 +2,8 @@
 function solution(board) {
 	let answer = 0;
 	let map = Array(21).fill(0);
+
+	// i = 1 부터 탐색하기 위해 임시 map 배열 변수를 생성
 	for (let i = 0; i < map.length; i++) {
 		map[i] = Array(21).fill(0);
 	}
@@ -11,6 +13,7 @@ function solution(board) {
 		}
 	}
 
+	// 오른쪽 윗대각선, 오른쪽, 오른쪽 아랫대각선, 아래 방향만 탐색한다.
 	let dx = [-1, 0, 1, 1];
 	let dy = [1, 1, 1, 0];
 	//방향 설정하기
