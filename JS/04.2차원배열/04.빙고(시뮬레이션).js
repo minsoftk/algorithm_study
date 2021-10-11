@@ -15,9 +15,9 @@ function solution(board, nums) {
 	}
 
 	// 임시 board 생성
-	let map = Array(board.length);
+	let bingo = Array(board.length);
 	for (let i = 0; i < board.length; i++) {
-		map[i] = Array(board.length).fill(0);
+		bingo[i] = Array(board.length).fill(0);
 	}
 
 	// board 요소를 입력
@@ -29,12 +29,12 @@ function solution(board, nums) {
 		}
 	}
 
-	console.log(map);
+	console.log(preview_board);
 	// 임시 board에 빙고 시작
 	for (let i = 0; i < nums.length; i++) {
 		let x = nums[i];
 		// 사회자가 불러준 숫자 0으로 변경
-		map[preview_board[0][x]][preview_board[1][x]] = 1;
+		bingo[preview_board[0][x]][preview_board[1][x]] = 1;
 
 		// 빙고 0으로 초기화
 		c1 = c2 = c3 = c4 = 1;
@@ -42,27 +42,27 @@ function solution(board, nums) {
 		// 대각선의 경우, preview[0][x] = preview_board[1][x] 같다면 대각선 확인
 		if (preview_board[0][x] === preview_board[1][x]) {
 			// 대각선의 요소들을 임시 board 변수인 map에서 모두 0인지 확인.
-			for (let k = 0; k < map.length; k++) {
+			for (let k = 0; k < bingo.length; k++) {
 				// 한개라도 0이라면 반복문 중단
-				if (map[k][k] === 0) c1 = 0;
+				if (bingo[k][k] === 0) c1 = 0;
 			}
 		} else c1 = 0; // 사회자가 부른 값이 대각선 방향이 아니므로 x 표시
 
-		// 오른쪽에서 왼쪽 방향의 대각선 check, c2에 저장
+		// 오른쪽 상단에서 왼쪽 아랫 방향의 대각선 check, c2에 저장
 		if (preview_board[0][x] + preview_board[1][x] === board.length - 1) {
-			for (let j = 0; j < map.length; j++) {
-				if (map[j][map.length - 1 - j] === 0) c2 = 0;
+			for (let j = 0; j < bingo.length; j++) {
+				if (bingo[j][bingo.length - 1 - j] === 0) c2 = 0;
 			}
 		} else c2 = 0; // 사회자가 부른 값이 대각선 방향이 아니다.
 
-		for (let j = 0; j < map.length; j++) {
-			if (map[preview_board[0][x]][j] === 0) c3 = 0;
-			if (map[j][preview_board[1][x]] === 0) c4 = 0;
+		for (let j = 0; j < bingo.length; j++) {
+			if (bingo[preview_board[0][x]][j] === 0) c3 = 0;
+			if (bingo[j][preview_board[1][x]] === 0) c4 = 0;
 		}
 		sum += c1 + c2 + c3 + c4;
 
 		if (sum >= 3) {
-			answer = j + 1;
+			answer = i + 1;
 			break;
 		}
 	}
@@ -78,6 +78,9 @@ console.log(
 			[19, 4, 8, 14, 9],
 			[22, 15, 7, 23, 18],
 		],
-		[5, 10, 7, 16, 2, 4, 22, 8, 17, 13, 3, 18, 1]
+		[
+			5, 10, 7, 16, 2, 4, 22, 8, 17, 13, 3, 18, 1, 6, 25, 12, 19, 23, 14, 21,
+			11, 24, 9, 20, 15,
+		]
 	)
-);
+); // 15
