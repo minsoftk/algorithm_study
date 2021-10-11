@@ -29,9 +29,10 @@ function solution(board, nums) {
 		}
 	}
 
+	console.log(map);
 	// 임시 board에 빙고 시작
-	for (let j = 0; j < nums.length; j++) {
-		let x = nums[j];
+	for (let i = 0; i < nums.length; i++) {
+		let x = nums[i];
 		// 사회자가 불러준 숫자 0으로 변경
 		map[preview_board[0][x]][preview_board[1][x]] = 1;
 
@@ -42,27 +43,26 @@ function solution(board, nums) {
 		if (preview_board[0][x] === preview_board[1][x]) {
 			// 대각선의 요소들을 임시 board 변수인 map에서 모두 0인지 확인.
 			for (let k = 0; k < map.length; k++) {
-				// 모두 0이라면 빙고이므로 c1 = 0
+				// 한개라도 0이라면 반복문 중단
 				if (map[k][k] === 0) c1 = 0;
 			}
-		} else c1 = 0; // ????
+		} else c1 = 0; // 사회자가 부른 값이 대각선 방향이 아니므로 x 표시
 
 		// 오른쪽에서 왼쪽 방향의 대각선 check, c2에 저장
 		if (preview_board[0][x] + preview_board[1][x] === board.length - 1) {
-			for (let k = 0; k < map.length; k++) {
-				if (map[k][map.length - 1 - k] === 0) c2 = 0;
+			for (let j = 0; j < map.length; j++) {
+				if (map[j][map.length - 1 - j] === 0) c2 = 0;
 			}
-		} else c2 = 0;
+		} else c2 = 0; // 사회자가 부른 값이 대각선 방향이 아니다.
 
-		for (let k = 0; k < map.length; k++) {
-			if (map[preview_board[0][x]][k] === 0) c3 = 0;
-			if (map[k][preview_board[1][x]] === 0) c4 = 0;
+		for (let j = 0; j < map.length; j++) {
+			if (map[preview_board[0][x]][j] === 0) c3 = 0;
+			if (map[j][preview_board[1][x]] === 0) c4 = 0;
 		}
 		sum += c1 + c2 + c3 + c4;
-		console.log('j', j);
+
 		if (sum >= 3) {
 			answer = j + 1;
-			console.log('j', j);
 			break;
 		}
 	}
