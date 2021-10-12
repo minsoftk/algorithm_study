@@ -1,3 +1,5 @@
+// M 이하가 되는 경우의 수를 구하는 것.
+
 function solution(nums, m) {
 	let left = 0,
 		sum = 0,

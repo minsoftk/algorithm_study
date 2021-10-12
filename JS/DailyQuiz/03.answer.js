@@ -1,3 +1,4 @@
+// 3개 이하의
 function solution(nums, k) {
 	let answer = 0;
 	function counting(k) {
@@ -14,6 +15,7 @@ function solution(nums, k) {
 		}
 		return sum;
 	}
+	// k개이하가 되는 부분수열의 개수를 구한다.
 	answer = counting(k) - counting(k - 1);
 	return answer;
 }
