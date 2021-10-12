@@ -1,5 +1,15 @@
-function solution(s) {
+function solution(nums) {
 	let answer = '';
+	let stack = [];
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] >= nums[i + 1]) {
+			stack.pop();
+			stack.push(i+1, nums[i]);
+		} else {
+			if (stack[0][1] > nums[i])
+		}
+	}
+	console.log(stack);
 
 	return answer;
 }
