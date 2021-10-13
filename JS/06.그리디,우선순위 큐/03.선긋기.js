@@ -36,3 +36,24 @@ console.log(
 		[9, 10],
 	])
 ); // 5
+
+function solution(nums, m) {
+	let answer;
+
+	let arr = nums.sort((a, b) => a[0] - b[0]);
+	let s = nums[0][0];
+	let e = nums[0][1];
+	for (let i = 1; i < nums.length; i++) {
+		// 만약 (1,3) -> (2, 5) 처럼 prev의 1번 idx값이 next의 0번 인덱스 값보다 크다면
+		// (1, 5)로 연결해준다.
+		if (nums[i][0] <= e && nums[i][1] > e) {
+			e = nums[i][1];
+		} else if (nums[i][0] > e) {
+			answer += e - s;
+			s = nums[i][0];
+			e = nums[i][1];
+		}
+	}
+	answer += e - s;
+	return answer;
+}

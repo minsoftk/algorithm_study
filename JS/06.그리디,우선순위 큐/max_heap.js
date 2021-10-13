@@ -10,10 +10,14 @@ class maxHeap {
 
 	upheap(pos) {
 		let tmp = this.heap[pos];
+		// 부모 노드보다 클 경우
 		while (tmp > this.heap[parseInt(pos / 2)]) {
+			// insert에서 입력된 새로운 값의 idx에 부모노드의 값을 입력한다.
+			// pos는 부모노드의 위치로 바뀐다.
 			this.heap[pos] = this.heap[parseInt(pos / 2)];
 			pos = parseInt(pos / 2);
 		}
+		// 부모노드보다 컸던 tmp값이 입력. 즉, 7-8  -> 8-7 과정
 		this.heap[pos] = tmp;
 	}
 	get() {
@@ -28,7 +32,6 @@ class maxHeap {
 			child;
 		while (pos <= parseInt(len / 2)) {
 			child = pos * 2;
-
 			// 왼쪽 자식이 더 큰가 오른쪽 자식이 더 큰가
 			// len보다는 작아야 한다.
 			if (child < len && this.heap[child] < this.heap[child + 1]) child++;
@@ -43,26 +46,10 @@ class maxHeap {
 	}
 }
 
-function solution(nums) {
-	let answer = 0;
-	let stack = [];
-	let cnt = 0,
-		sum = 0;
-
-	let heap = new maxHeap();
-	for (let x of nums) {
-		heap.insert(x);
-	}
-	while (heap.size() > 1) {
-		let a = heap.get();
-		let b = heap.get();
-		if (a !== b) heap.insert(Math.abs(a - b));
-	}
-	if (heap.size() === 0) answer = 0;
-	else answer = heap.get();
-
-	return answer;
-}
-
-console.log(solution([5, 2, 4, 3, 1])); // 1
-console.log(solution([7, 6, 3, 2, 4, 5, 1])); // 0
+let maxH = new maxHeap();
+maxH.insert(7);
+maxH.insert(8);
+maxH.insert(5);
+maxH.insert(4);
+maxH.insert(9);
+console.log(maxH);

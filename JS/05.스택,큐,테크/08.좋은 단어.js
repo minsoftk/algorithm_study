@@ -14,12 +14,12 @@ function solution(s, m) {
 
 function solution2(s, m) {
 	let answer = 0;
-	let queue = Array(21).fill(0);
-	for (let i = 0; i < queue.length; i++) queue[i] = Array(21).fill(0);
+	let queue = Array(21);
+	for (let i = 0; i < queue.length; i++) queue[i] = Array(21);
 
 	for (let i = 0; i < s.length; i++) {
 		let len = s[i].length;
-		while (queue[len].length > 0 && i - queue[len][0] > m) {
+		while (queue[len].length && i - queue[len][0] > m) {
 			queue[len].shift();
 		}
 		answer += queue[len].length;
