@@ -1,0 +1,40 @@
+function solution(nums, m) {
+	let answer;
+	let stack = [];
+
+	let arr = nums.sort((a, b) => a[0] - b[0]);
+	let sum = 0;
+	for (let i = 0; i < nums.length; i++) {
+		// 만약 (1,3) -> (2, 5) 처럼 prev의 1번 idx값이 next의 0번 인덱스 값보다 크다면
+		// (1, 5)로 연결해준다.
+		if (stack.length && stack[stack.length - 1][1] > nums[i][0]) {
+			let temp = stack.pop();
+			stack.push([temp[0], nums[i][1]]);
+		} else stack.push(nums[i]);
+	}
+
+	while (stack.length > 0) {
+		sum += stack[stack.length - 1][1] - stack[stack.length - 1][0];
+		stack.pop();
+	}
+	answer = sum;
+	return answer;
+}
+
+console.log(
+	solution([
+		[1, 4],
+		[2, 3],
+		[3, 5],
+		[4, 6],
+		[5, 7],
+	])
+); // 3
+console.log(
+	solution([
+		[5, 6],
+		[1, 3],
+		[7, 8],
+		[9, 10],
+	])
+); // 5
