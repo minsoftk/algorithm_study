@@ -9,12 +9,14 @@ function solution(s, m) {
 	// }
 	// return cnt;
 }
-console.log(solution(['back', 'seen', 'big', 'good', 'size'], 2)); // 3
-console.log(solution(['back', 'seen', 'good', 'size'], 2)); // 5
+// console.log(solution(['back', 'seen', 'big', 'good', 'size'], 2)); // 3
+// console.log(solution(['back', 'seen', 'good', 'size'], 2)); // 5
 
 function solution2(s, m) {
 	let answer = 0;
 	let queue = Array(21).fill(0);
+	for (let i = 0; i < queue.length; i++) queue[i] = Array(21).fill(0);
+
 	for (let i = 0; i < s.length; i++) {
 		let len = s[i].length;
 		while (queue[len].length > 0 && i - queue[len][0] > m) {
@@ -25,3 +27,5 @@ function solution2(s, m) {
 	}
 	return answer;
 }
+console.log(solution2(['back', 'seen', 'big', 'good', 'size'], 2)); // 3
+console.log(solution2(['back', 'seen', 'good', 'size'], 2)); // 5

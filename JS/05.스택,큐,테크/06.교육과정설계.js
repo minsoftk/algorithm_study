@@ -17,12 +17,10 @@
 // 	if (stack.length === 0) return 'YES';
 // 	else return 'NO';
 // }
-console.log(solution('CBA', 'CBDAGE')); // YES
-console.log(solution('CBA', 'CBDBAGE')); // YES
 
 function solution(need, plan) {
 	let answer = 'YES';
-	let queue = need.split();
+	let queue = need.split('');
 	for (let i = 0; i < plan.length; i++) {
 		if (queue.includes(plan[i])) {
 			if (plan[i] !== queue.shift()) return 'NO';

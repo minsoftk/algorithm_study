@@ -14,6 +14,7 @@ function solution(s) {
 		// 값이 같지 않다면 stack에 push 해준다.
 		else answer.push(s[i]);
 	}
+	answer = answer.join('');
 	return answer;
 }
 console.log(solution('acbbcaa')); // a
