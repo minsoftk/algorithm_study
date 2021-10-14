@@ -1,16 +1,14 @@
 // 재귀함수에서는 무조건 if - else로 생각해라.
-// if는 종착점, else는 돌릴
+// if는 종착점, else 다시 돌릴 조건들
 
 function solution(n) {
-	let answer;
 	function DFS(L) {
-		if (L == 0) return;
+		if (L === 0) return;
 		else {
-			DFS(parseInt(n / 2));
-			console.log(n % 2);
+			console.log(L % 2);
+			DFS(parseInt(L / 2));
 		}
 	}
-	DFS(3);
+	DFS(n);
 }
-
-console.log(solution(11)); // 1011
+solution(20);
