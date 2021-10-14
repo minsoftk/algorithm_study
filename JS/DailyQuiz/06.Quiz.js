@@ -1,8 +1,3 @@
-/**
- * @param {number[][]} events
- * @return {number}
- */
-
 class maxHeap {
 	constructor() {
 		this.heap = [];
@@ -51,57 +46,65 @@ class maxHeap {
 	}
 }
 
-function solution(events) {
+function solution(nums) {
 	let answer = 0;
-	events.sort((a, b) => {
-		if (a[0] == b[0]) return a[1] - b[1];
+
+	nums.sort((a, b) => {
+		if (a[0] === b[0]) return a[1] - b[1];
 		return a[0] - b[0];
 	});
 
-	let index = 0;
-	let pq = new MinHeap();
-	for (let day = 1; day < 10e5; day++) {
-		while (index < events.length && events[index][0] <= day) {
-			pq.insert(events[index++][1]);
-		}
-		let top = pq.get();
-		while (top && top < day) {
-			top = pq.get();
-		}
+	let heap = new maxHeap();
+	let sum = 0;
+	let cnt = 0;
+	for (let i = 0; i < nums.length; i++) {
+		sum += nums[i][0];
 
-		answer += day <= top ? 1 : 0;
+		if (sum <= nums[i][1] && nums[i][0] <= nums[i][1]) {
+			// heap.insert(nums[i][1]);
+			cnt++;
+		} else {
+			sum -= nums[i][0];
+		}
+		console.log(sum);
 	}
-
+	answer = cnt;
 	return answer;
 }
 
 console.log(
 	solution([
-		[1, 2],
-		[2, 3],
-		[3, 4],
-		[1, 2],
+		[3, 11],
+		[5, 10],
+		[3, 10],
+		[2, 10],
+		[4, 12],
 	])
 ); //4
+console.log(solution([[1, 2]])); //1
 console.log(
 	solution([
-		[1, 4],
-		[4, 4],
-		[2, 2],
-		[3, 4],
-		[1, 1],
+		[3, 2],
+		[4, 3],
 	])
-); //4
-
+); //0
 console.log(
 	solution([
-		[1, 1],
-		[1, 2],
-		[1, 3],
-		[1, 4],
-		[1, 5],
-		[1, 6],
-		[1, 7],
+		[3, 11],
+		[5, 10],
+		[3, 10],
+		[2, 10],
+		[4, 12],
+		[5, 15],
+		[3, 17],
 	])
-); // 7
-console.log(solution([[1, 100000]])); // 1
+); //5
+console.log(
+	solution([
+		[7, 11],
+		[6, 10],
+		[3, 10],
+		[2, 10],
+		[1, 12],
+	])
+); //3

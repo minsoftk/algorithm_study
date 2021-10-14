@@ -7,7 +7,7 @@ function solution(meets) {
 	// (1,3), (3,3) 2개 선택이 가능하다. 따라서 if (a[1] == b[1]) return a[0] - b[0]; 가 추가
 	meets.sort((a, b) => {
 		if (a[1] == b[1]) return a[0] - b[0];
-		else return a[1] - b[1];
+		return a[1] - b[1];
 	});
 
 	// left idx로 회의 시작 시간을 저장해준다.
