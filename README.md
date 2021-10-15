@@ -1,9 +1,9 @@
 #  알고리즘
-* 카테고리별 문제 풀이 진행.
-* 현재의 주 언어는 JS로 변경.
+카테고리별 문제 풀이 진행.
+현재의 주 언어는 JS로 변경.
 
+  
 * 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
-
 * 백준 알고리즘 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/BaekJoon)
 * Solved.ac Level 기준
 
