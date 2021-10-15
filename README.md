@@ -4,8 +4,7 @@
 
   
 * 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
-* 백준 알고리즘 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/BaekJoon)
-* Solved.ac Level 기준
+* 백준 알고리즘 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/BaekJoon)(Solved.ac 위주)
 
 * leetcode 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/leetcode)
 
