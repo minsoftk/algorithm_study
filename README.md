@@ -2,12 +2,12 @@
 * 카테고리별 문제 풀이 진행.
 * 현재의 주 언어는 JS로 변경.
 
-## 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
+* 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
 
-## 백준 알고리즘 👉[Link]()
+* 백준 알고리즘 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/BaekJoon)
 * Solved.ac Level 기준
 
-## leetcode 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/leetcode)
+* leetcode 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/leetcode)
 
 ※ 다음은 백준사이트의 문제입니다. 형식 : 문제번호(문제제목)
 
