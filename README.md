@@ -1,17 +1,12 @@
 #  알고리즘
-1. C/C++ 강의 알고리즘 
-2. 프로그래머스 알고리즘 풀이를 올립니다.
-3. 백준 알고리즘 풀이를 올립니다. (Solved.ac 티어 기준 작성)
+카테고리별 문제 풀이 진행.
+현재의 주 언어는 JS로 변경.
 
-## C/C++ 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/C%20%26%20C%2B%2B)
+  
+* 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
+* 백준 알고리즘 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/BaekJoon)(Solved.ac 위주)
 
-
-## 프로그래머스 알고리즘 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/Programmers)
-
-## 백준 알고리즘 👉[Link]()
-* Solved.ac Level 기준
-
-## leetcode 👉[Link](https://github.com/MinsoftK/Algorithm_Q/tree/master/leetcode)
+* leetcode 👉[Link](https://github.com/minsoftk/Algorithm_Q/tree/master/leetcode)
 
 ※ 다음은 백준사이트의 문제입니다. 형식 : 문제번호(문제제목)
 
