@@ -1,51 +1,47 @@
-function solution(map) {
-	let answer = 0;
-	let len = map.length;
-
-	// 대각선까지 섬으로 친다.
-	let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
-	let dy = [0, 1, 1, 1, 0, -1, -1, -1];
-
-	// DFS 구현부
-	function DFS(x, y) {
-		for (let i = 0; i < 8; i++) {
-			let xx = x + dx[i];
-			let yy = y + dy[i];
-			// xx, yy가 범위 안에 있는지, 입력받은 map의 값이 1인지 확인
-			if (xx >= 0 && xx < len && yy >= 0 && yy < len && map[xx][yy] === 1) {
-				// 방문 체크를 위해 map에 0값을 입력해준다.
-				// 어차피 섬의 개수가 체크 되었고 1인 부분만 체크를 하기 때문에, 0으로만 만들어줘도 무방하다.
-				//다음 xx, yy로 DFS
-				map[xx][yy] = 0;
-				DFS(xx, yy);
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function solution(nums) {
+	function BFS() {
+		let L = 0;
+		queue.push(0);
+		check[0] = 1;
+		while (queue.length) {
+			let len = queue.length;
+			for (let i = 0; i < len; i++) {
+				let front = queue.shift();
+				for (let j = 1; j <= nums[front]; j++) {
+					let move = front + j;
+					if (move === nums.length - 1) return L + 1;
+					if (move < nums.length && check[move] === 0) {
+						check[move] = 1;
+						queue.push(move);
+					}
+				}
 			}
+			L++;
 		}
 	}
 
-	// map을 탐색한다. 1인 값이 섬이므로 1인 index를 탐색한다.
-	for (let i = 0; i < len; i++) {
-		for (let j = 0; j < len; j++) {
-			// 1을 만나면 섬의 개수를 증가시켜주고, 값을 0으로 바꿔 방문 체크.
-			// i, j와 연결된 섬을 모두 0으로 바꿔주기 위해 DFS를 한다.
-			if (map[i][j] === 1) {
-				answer++;
-				map[i][j] = 0;
-				DFS(i, j);
-			}
-		}
-	}
+	let answer;
+	let check = Array(nums.length).fill(0);
+	let queue = [];
 
+	answer = BFS();
+	if (answer === undefined) return 0;
 	return answer;
 }
 
+console.log(solution([2, 3, 1, 1, 4])); // 2
+console.log(solution([1, 2, 1, 1, 1])); // 3
+console.log(solution([2, 1, 1, 1, 1])); // 3
+console.log(solution([0, 1, 1, 1, 1])); // 3
 console.log(
 	solution([
-		[1, 1, 0, 0, 0, 1, 0],
-		[0, 1, 1, 0, 1, 1, 0],
-		[0, 1, 0, 0, 0, 0, 0],
-		[0, 0, 0, 1, 0, 1, 1],
-		[1, 1, 0, 1, 1, 0, 0],
-		[1, 0, 0, 0, 1, 0, 0],
-		[1, 0, 1, 0, 1, 0, 0],
+		8, 2, 4, 4, 4, 9, 5, 2, 5, 8, 8, 0, 8, 6, 9, 1, 1, 6, 3, 5, 1, 2, 6, 6, 0,
+		4, 8, 6, 0, 3, 2, 8, 7, 6, 5, 1, 7, 0, 3, 4, 8, 3, 5, 9, 0, 4, 0, 1, 0, 5,
+		9, 2, 0, 7, 0, 2, 1, 0, 8, 2, 5, 1, 2, 3, 9, 7, 4, 7, 0, 0, 1, 8, 5, 6, 7,
+		5, 1, 9, 9, 3, 5, 0, 7, 5,
 	])
 ); // 3

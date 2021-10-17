@@ -5,7 +5,7 @@ function solution(n, edges) {
 	let graph = Array(len + 1); // 인접행렬 그래프 생성
 
 	for (let i = 0; i < len; i++) {
-		graph[i] = Array(len + 1);
+		graph[i] = Array();
 	}
 	for (let [a, b] of edges) {
 		graph[a].push(b);
