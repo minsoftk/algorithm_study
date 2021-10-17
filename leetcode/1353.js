@@ -1,3 +1,8 @@
+/**
+ * @param {number[][]} events
+ * @return {number}
+ */
+
 class maxHeap {
 	constructor() {
 		this.heap = [];
@@ -10,10 +15,14 @@ class maxHeap {
 
 	upheap(pos) {
 		let tmp = this.heap[pos];
+		// 부모 노드보다 클 경우
 		while (tmp > this.heap[parseInt(pos / 2)]) {
+			// insert에서 입력된 새로운 값의 idx에 부모노드의 값을 입력한다.
+			// pos는 부모노드의 위치로 바뀐다.
 			this.heap[pos] = this.heap[parseInt(pos / 2)];
 			pos = parseInt(pos / 2);
 		}
+		// 부모노드보다 컸던 tmp값이 입력. 즉, 7-8  -> 8-7 과정
 		this.heap[pos] = tmp;
 	}
 	get() {
@@ -28,7 +37,6 @@ class maxHeap {
 			child;
 		while (pos <= parseInt(len / 2)) {
 			child = pos * 2;
-
 			// 왼쪽 자식이 더 큰가 오른쪽 자식이 더 큰가
 			// len보다는 작아야 한다.
 			if (child < len && this.heap[child] < this.heap[child + 1]) child++;
@@ -43,41 +51,57 @@ class maxHeap {
 	}
 }
 
-// 날짜로 내림차순
-// 아이스크림
-function solution(nums) {
+function solution(events) {
 	let answer = 0;
-	nums.sort((a, b) => b[1] - a[1]);
-	let maxN = nums[0][1];
-	let maxH = new maxHeap();
-	let i = 0;
-	for (let day = maxN; day >= 1; day--) {
-		for (; i < nums.length; i++) {
-			if (nums[i][1] < day) break;
-			maxH.insert(nums[i][0]);
+	events.sort((a, b) => {
+		if (a[0] == b[0]) return a[1] - b[1];
+		return a[0] - b[0];
+	});
+
+	let index = 0;
+	let pq = new MinHeap();
+	for (let day = 1; day < 10e5; day++) {
+		while (index < events.length && events[index][0] <= day) {
+			pq.insert(events[index++][1]);
 		}
-		if (maxH.size() > 0) {
-			answer += maxH.get();
+		let top = pq.get();
+		while (top && top < day) {
+			top = pq.get();
 		}
+
+		answer += day <= top ? 1 : 0;
 	}
+
 	return answer;
 }
 
 console.log(
 	solution([
-		[50, 2],
-		[20, 1],
-		[40, 2],
-		[60, 3],
-		[30, 3],
-		[30, 1],
+		[1, 2],
+		[2, 3],
+		[3, 4],
+		[1, 2],
 	])
-); // 150
+); //4
 console.log(
 	solution([
-		[50, 2],
-		[40, 2],
-		[20, 1],
-		[10, 1],
+		[1, 4],
+		[4, 4],
+		[2, 2],
+		[3, 4],
+		[1, 1],
 	])
-); // 90
+); //4
+
+console.log(
+	solution([
+		[1, 1],
+		[1, 2],
+		[1, 3],
+		[1, 4],
+		[1, 5],
+		[1, 6],
+		[1, 7],
+	])
+); // 7
+console.log(solution([[1, 100000]])); // 1

@@ -10,11 +10,6 @@ function solution(nums, m) {
 
 	// DFS 시작
 	function DFS(L, m) {
-		// slice() : 깊은 복사를 실행해주는 메소드. 그냥 tmp만 넣어버리면 아무 값도 들어가지 않음.
-		//자바스크립트에 대한 이해도가 조금 필요한 부분이라 조금 어렵다.
-		//아예 배열값에 tmp[i]로 입력을 해준 뒤, answer에 push하는 방법도 있음.
-
-		// 만약 Level이 m이라면 재귀 끝내는 조건. (2개 입력이기 때문에 L = 0, 1 에서만 실행)
 		if (L === m) {
 			answer.push(tmp.slice());
 			return;
