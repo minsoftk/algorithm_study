@@ -14,6 +14,7 @@ function solution(board) {
 	// BFS 구현부
 	let queue = [];
 	function BFS() {
+		let L = 0;
 		while (queue.length) {
 			// queue가 빌 때까지 반복
 			let front = queue.shift();
@@ -36,6 +37,7 @@ function solution(board) {
 					answer = check[xx][yy];
 				}
 			}
+			L++;
 		}
 	}
 
