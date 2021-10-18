@@ -1,25 +1,28 @@
-function solution(str) {
+function solution(s) {
 	let answer = 'YES';
+	let str = s.split('');
 	let left = 0,
-		right = str.length - 1;
+		right = s.length - 1;
 	let flag = true;
-	while (left < right) {
-		if (str[left] !== str[right]) {
-			let temp = str.substring(left, right);
-			let temp2 = str.substring(left + 1, right + 1);
+	while (left <= right) {
+		if (s[left] !== s[right]) {
+			let temp = s.substring(left, right);
+			let temp2 = s.substring(left + 1, right + 1);
+
 			if (
-				temp === temp.split('').reverse().join('') ||
-				temp2 === temp2.split('').reverse().join('')
+				temp.split('').reverse().join('') !== temp &&
+				temp2.split('').reverse().join('') !== temp2
 			) {
-				answer = 'YES';
+				answer = 'NO';
 				break;
 			}
-			console.log(temp);
-		} else {
-			left++;
-			right--;
 		}
+		left++;
+		right--;
 	}
 	return answer;
 }
-console.log(solution('abcabbakcba'));
+
+console.log(solution('abcbdcba')); // YES
+console.log(solution('abcabbakcba')); // YES
+console.log(solution('abcacbakcba')); // NO

@@ -13,3 +13,19 @@ function solution(str) {
 	return answer;
 }
 console.log(solution(KKHSSSSSSSE));
+
+function solution(s) {
+	let answer = '';
+	let hash = new Map();
+	for (x of s) {
+		hash.set(x, (hash.get(x) || 0) + 1);
+	}
+
+	for (let [key, val] of hash) {
+		answer += key;
+		if (hash.get(key) !== 1) answer += hash.get(key);
+	}
+	return answer;
+}
+
+console.log(solution('KKHSSSSSSSE'));

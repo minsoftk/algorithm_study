@@ -10,9 +10,12 @@ function solution(str) {
 }
 console.log(solution('GgooGg'));
 
-```js
-let answer = 'YES';
-str = str.toLowerCase();
-if (str.split('').reverse().join('') != str) return 'NO';
-return answer;
-```;
+function solution2(s) {
+	let answer = 'YES';
+	s = s.toLowerCase();
+	let temp = s.split('').reverse().join('');
+	if (s !== temp) answer = 'NO';
+	return answer;
+}
+
+console.log(solution('gooG')); // YES

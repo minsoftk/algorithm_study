@@ -14,7 +14,7 @@ function solution(str) {
 			right--;
 		}
 	}
-	return str;
+	return str.join('');
 }
 console.log(solution('a#b!GE*T@S'));
 
