@@ -1,17 +1,32 @@
 // 계단 하나로 세분화 시킨다.
 function solution(times, r) {
 	let answer = 0;
-	let m = times.length;
-	let dy = Array(m).fill(0);
+	let m = times.length; // times 배열의 길이
+	let dy = Array(m).fill(0); // 각각의 i번째에서 최대 효율성을 저장하는 배열
 
+	// sort를 해준다. 끝나는 시간을 기준으로 해줘야 가장 효과적으로 선택할 수 있기 때문에
 	times.sort((a, b) => a[1] - b[1]);
+
+	// 다이나믹 프로그래밍 과정
 	for (let i = 0; i < m; i++) {
-		dy[i] = times[i][2];
+		dy[i] = times[i][2]; // i번째의 효율성을 저장해준다.
+
+		// i번째 이전의 값들을 선택할 수 있는지 확인하고 dy[i]를 최대값으로 만들어준다.
 		for (let j = i - 1; j >= 0; j--) {
+			// 한 구간을 공부하고 나서는 r의 휴식시간이 필요, 따라서 i번째 이전의 j 구간에서는 `끝나는 시간 + r`이 i번째의 시작 시간과 같아야 함.
+			// 또한 이전 구간들의 효율성 크기에 따라 훨씬 이전의 값이 현재 dy[i]보다 효율성이 큰 경우가 존재한다.
+			// 따라서 dy[j] + times[i][2] > dy[i] 조건을 넣어준다.
+			// 처음의 dy[i] 값과 times[i][2] 값은 똑같지만 효율성이 큰 값을 dy[i]에 입력하게 된다. 따라서 dy[i] 값은 효율성이 큰 값으로 변경되면서 \n
+			// 이전의 효율성 값 dy[j]와 i번째의 효율성인 times[i][2]의 합이 현재 최대 효율성 값인 dy[i]와 비교를 하게 된다.
+			// 만약 최대 효율성인 dy[i]보다 더 크다면 최대 효율성을 dy[i]에 저장한다.
 			if (times[j][1] + r <= times[i][0] && dy[j] + times[i][2] > dy[i]) {
 				dy[i] = dy[j] + times[i][2];
 			}
 		}
+
+		// i번째 효율성이 기준이므로, 이전에 나온 값이 더 큰 값일 수 있다.
+		// 문제에서 dy[4] 일때 정답인 28이 저장 돼 있다. 하지만 이후에 dy[5]에선 더 작은 값이 올 수도 있다. i가 5를 기준으로 계산하므로
+		// times[5][2]가 극단적으로 효율성이 1일 경우.
 		answer = Math.max(answer, dy[i]);
 	}
 	return answer;
