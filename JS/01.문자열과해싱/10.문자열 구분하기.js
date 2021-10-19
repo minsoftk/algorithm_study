@@ -1,5 +1,6 @@
 function solution(s) {
 	let answer, i;
+
 	for (i = 0; i < s[0].length; i++) {
 		let hash = new Map();
 		let flag = true;
@@ -21,3 +22,5 @@ function solution(s) {
 console.log(solution(['seeasue', 'sesseysu', 'semeas']));
 // console.log(solution(['ackky', 'kabck', 'yokkcs']));
 // console.log(solution(['longlong', 'longtong', 'longbig']));
+
+// set으로 푸는 방법도 있음.
