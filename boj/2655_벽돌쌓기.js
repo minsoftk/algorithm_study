@@ -26,24 +26,22 @@ function solution(n, arr) {
 	for (let i = 0; i < n; i++) stone[i] = Array();
 	arr.sort((a, b) => b[0] - a[0]);
 
-	dy[0] = arr[0][1];
+	dy[0] = arr[0][1]; // 높이를 저장
 	stone[0].push(arr[0][3]);
 	for (let i = 1; i < n; i++) {
 		stone[i].push(arr[i][3]);
+
 		let max = 0;
 		for (let j = i - 1; j >= 0; j--) {
 			if (arr[i][2] < arr[j][2] && dy[j] > max) {
-				max = dy[j];
+				max = Math.max(dy[j], max);
+				dy[i] = max + arr[i][1];
 			}
 		}
-		dy[i] = max + 1;
-		for (let j = 0; j < i; j++) {
-			if (arr[i][2] < arr[j][2] && dy[j] < dy[i]) {
-				for (let x of stone[j]) stone[i].push(x);
-			}
-		}
-		cnt = Math.max(cnt, dy[i]);
 	}
+
+	// check 배열을 만들어준다.
+	console.log(dy);
 	console.log(cnt);
 	console.log(stone);
 

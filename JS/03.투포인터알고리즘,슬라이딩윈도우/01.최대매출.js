@@ -19,12 +19,6 @@ function solution(nums, k) {
 	return max;
 }
 
-console.log(solution([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3));
-console.log(solution([1, 2, 3, 5, 6, 7, 1, 3, 9], 5));
-console.log(solution([12, 34, 56, 72, 93, 121, 33, 11, 23, 52], 4));
-
-/*
-
-
-
-*/
+console.log(solution([12, 15, 11, 20, 25, 10, 20, 19, 13, 15], 3)); //56
+console.log(solution([1, 2, 3, 5, 6, 7, 1, 3, 9], 5)); //26
+console.log(solution([12, 34, 56, 72, 93, 121, 33, 11, 23, 52], 4)); //342

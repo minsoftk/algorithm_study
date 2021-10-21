@@ -45,5 +45,5 @@ function solution2(nums, k) {
 	}
 	return answer;
 }
-console.log(solution([20, 12, 20, 10, 23, 17, 10], 4));
-console.log(solution([1, 2, 3, 2, 2, 3, 3, 3, 3, 2], 3));
+console.log(solution([20, 12, 20, 10, 23, 17, 10], 4)); // [3, 4, 4, 3]
+console.log(solution([1, 2, 3, 2, 2, 3, 3, 3, 3, 2], 3)); // [3, 2, 2, 2, 2, 1, 1, 2]

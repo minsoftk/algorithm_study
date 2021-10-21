@@ -7,8 +7,14 @@ function solution(arr, k) {
 			hash.set(x, (hash.get(x) || 0) + 1);
 		}
 	}
-	let temp = [...hash].sort((a, b) => b[1] - a[1]);
+	console.log(hash);
+	let temp = [...hash].sort((a, b) => b[0] - a[0]);
+	let str = '';
+	for (let i = 0; i < temp.length; i++) {
+		for (let j = 0; j < temp[i][1]; j++) str += temp[i][0];
+	}
 	console.log('temp', temp);
+	console.log(str);
 	let answer = [];
 	for (let i = 0; i < k; i++) {
 		answer.push(temp[i][0]);
