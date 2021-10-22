@@ -31,3 +31,5 @@ function solution(nums) {
 	}
 }
 console.log(solution([1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1], 3)); // 2
+
+// 3. stack

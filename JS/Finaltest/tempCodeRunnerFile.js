@@ -1,0 +1,1 @@
+if (b[0].toLowerCase() === a[0].toLowerCase()) return -1;

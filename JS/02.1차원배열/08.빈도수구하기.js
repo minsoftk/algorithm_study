@@ -9,12 +9,11 @@ function solution(arr, k) {
 	}
 	console.log(hash);
 	let temp = [...hash].sort((a, b) => b[0] - a[0]);
+	console.log(temp);
 	let str = '';
 	for (let i = 0; i < temp.length; i++) {
 		for (let j = 0; j < temp[i][1]; j++) str += temp[i][0];
 	}
-	console.log('temp', temp);
-	console.log(str);
 	let answer = [];
 	for (let i = 0; i < k; i++) {
 		answer.push(temp[i][0]);
@@ -23,5 +22,5 @@ function solution(arr, k) {
 	return answer;
 }
 
-console.log(solution([1, 1, 1, 2, 2, 3], 2));
+console.log(solution([1, 1, 11, 1, 2, 2, 3], 2));
 console.log(solution([3, 3, 3, 5, 1, 1, 1, 7, 2, 2], 3));
