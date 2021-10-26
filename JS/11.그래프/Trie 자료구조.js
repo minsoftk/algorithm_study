@@ -23,12 +23,12 @@ class Trie {
 	search(word) {
 		let cur = this.root;
 		for (let x of word) {
-			console.log(x);
 			if (cur.child[x] === undefined) return false;
 			cur = cur.child[x];
 		}
 		return cur.end;
 	}
+
 	prefixS(str) {
 		let cur = this.root;
 		for (let x of str) {
@@ -42,5 +42,6 @@ class Trie {
 let trie = new Trie();
 trie.insert('study');
 trie.insert('stky');
+
 console.log(trie.search('stky'));
 console.log(trie.prefixS('st'));

@@ -3,26 +3,36 @@
 // 그래프에서 트리를 뽑아낸다.
 //트리에서 그룹화를 시키면 Union화를 시켜라.
 function solution(n, edges) {
+	// v가 속한 집합 번호를 반환한다.
 	// 가장 중요한 부분
 	function Find(v) {
-		if (v === unf[v]) return v;
-		else return (unf[v] = Find(unf[v]));
+		if (v === check[v]) return v;
+		// 메모제이션을 이용, 집합 번호를 찾으면 각각의 check[v]에 메모이제이션을 해준다.
+		else return (check[v] = Find(check[v]));
 	}
+
+	// a,b가 속한 두 집합을 하나로 합친다.
 	function Union(a, b) {
+		// a와 b의 집합 번호를 각각 fa, fb에 입력해준다.
 		let fa = Find(a);
 		let fb = Find(b);
-		if (a !== fb) unf[fa] = fb;
+		// 만약 a, b의 집합 번호가 같지 않다면,
+		if (fa !== fb) check[fa] = fb; // b의 집합 번호를 a의 집합 번호에 넣어서 Union 해준다.
 	}
 
 	let answer = 0;
-	let unf = Array.from({ length: n + 1 }, (v, i) => i);
+	let check = Array.from({ length: n + 1 }, (v, i) => i);
+
+	// 최소 비용을 구하기 위해 sort를 해준다.
 	edges.sort((a, b) => a[2] - b[2]);
+	// edge에서 각각의 집합 번호를 찾고
 	for (let [a, b, c] of edges) {
 		let fa = Find(a);
 		let fb = Find(b);
-		if (a !== b) {
+		// 집합이 같지 않을 경우 최소 간선의 비용을 더해주고 Union을 해준다.
+		if (fa !== fb) {
 			answer += c;
-			unf[fa] = fb;
+			Union(a, b);
 		}
 	}
 	return answer;
@@ -43,4 +53,4 @@ console.log(
 		[7, 8, 35],
 		[8, 9, 15],
 	])
-);
+); // 196

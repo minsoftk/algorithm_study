@@ -6,8 +6,8 @@ function solution(n, edges, end) {
 	for (let [a, b, c] of edges) {
 		graph[a].push([b, c]);
 	}
-	/**  **/
 
+	/**  min Heap 쓰지 않는 다익스트라 **/
 	dist[1] = 0;
 	for (let i = 1; i <= n; i++) {
 		let min = 0;
