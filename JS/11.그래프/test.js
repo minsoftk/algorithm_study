@@ -1,93 +1,48 @@
-class minHeap {
-	constructor() {
-		this.heap = [];
-		this.heap.push([Number.MIN_SAFE_INTEGER, 0]);
-	}
-	insert([a, b]) {
-		this.heap.push([a, b]);
-		this.upheap(this.heap.length - 1);
-	}
-	upheap(pos) {
-		let tmp = this.heap[pos];
-		while (tmp[1] < this.heap[parseInt(pos / 2)][1]) {
-			this.heap[pos] = this.heap[parseInt(pos / 2)];
-			pos = parseInt(pos / 2);
-		}
-		this.heap[pos] = tmp;
-	}
-	get() {
-		if (this.heap.length === 2) {
-			return this.heap.pop();
-		}
-		let res;
-		res = this.heap[1];
-		this.heap[1] = this.heap.pop();
-		this.downheap(1, this.heap.length - 1);
-		return res;
-	}
-	downheap(pos, len) {
-		let tmp, i;
-		tmp = this.heap[pos];
-		while (pos <= parseInt(len / 2)) {
-			i = pos * 2;
-			if (i < len && this.heap[i][1] < this.heap[i + 1][1]) i++;
-			if (tmp[1] <= this.heap[i][1]) break;
-			this.heap[pos] = this.heap[i];
-			pos = i;
-		}
-		this.heap[pos] = tmp;
-	}
-	size() {
-		return this.heap.length - 1;
-	}
-	top() {
-		return this.heap[1];
-	}
-}
-function solution(N, road, K) {
-	let answer = 0;
-	let minH = new minHeap();
-	let distance = Array(N + 1).fill(1e9);
-	let graph = Array(N + 1);
-	for (let i = 0; i < graph.length; i++) {
-		graph[i] = Array();
-	}
-
-	for (let [a, b, c] of road) {
+function solution(n, edges, k) {
+	let answer;
+	let graph = Array(n + 1);
+	for (let i = 0; i < graph.length; i++) graph[i] = Array();
+	let check = Array(n + 1).fill(0);
+	let dist = Array(n + 1).fill(1e9);
+	edges.forEach(([a, b, c]) => {
 		graph[a].push([b, c]);
-		graph[b].push([a, c]);
-	}
+	});
 
-	minH.insert([1, 0]);
-	distance[1] = 0;
-	while (minH.size() > 0) {
-		let [now, time] = minH.get();
-		if (time > distance[now]) continue;
-		for (let [next, nextTime] of graph[now]) {
-			if (time + nextTime < distance[next]) {
-				distance[next] = time + nextTime;
-				minH.insert([next, distance[next]]);
+	dist[1] = 0;
+	for (let i = 1; i <= n; i++) {
+		let min = 0;
+
+		// min을 이용해서 찾아야하는 노드를 min에 입력
+		for (let j = 1; j <= n; j++) {
+			if (check[j] === 0 && dist[j] < dist[min]) min = j;
+		}
+
+		// min과 연결된 노드들 탐색
+		for (let [next, cost] of graph[min]) {
+			if (dist[min] + cost < dist[next]) {
+				dist[next] = dist[min] + cost;
 			}
 		}
+		check[min] = 1;
 	}
-
-	for (let x of distance) {
-		if (x <= K) answer++;
-	}
-	return answer;
+	return dist[k];
 }
 
 console.log(
 	solution(
-		5,
+		6,
 		[
-			[1, 2, 1],
-			[2, 3, 3],
-			[5, 2, 2],
-			[1, 4, 2],
-			[5, 3, 1],
-			[5, 4, 2],
+			[1, 2, 12],
+			[1, 3, 4],
+			[2, 1, 2],
+			[2, 3, 5],
+			[2, 5, 5],
+			[3, 4, 5],
+			[4, 2, 2],
+			[4, 5, 5],
+			[6, 4, 5],
 		],
-		3
+		5
 	)
-); // 4
+);
+// 14

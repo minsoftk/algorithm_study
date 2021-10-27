@@ -60,13 +60,6 @@ function solution(N, road, K) {
 		graph[a].push([b, c]);
 	}
 
-	minH.insert([1, 3]);
-	minH.insert([1, 1]);
-	minH.insert([1, 2]);
-	minH.insert([1, 8888]);
-	minH.insert([1, 88]);
-	minH.insert([1, 8248]);
-	console.log(minH);
 	dist[1] = 0; // 시작점인 1번을 0으로 설정. 사용할 일이 없음.
 	minH.insert([1, 0]); // 시작점을 minheap에 넣어준다.
 
@@ -113,3 +106,4 @@ console.log(
 		5
 	)
 );
+//14
