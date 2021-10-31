@@ -19,10 +19,10 @@ function solution(n, work) {
 		return a[1] - b[1];
 	});
 
-	let left = 0;
+	let start = 0;
 	for (let x of work) {
-		if (x[0] >= left) {
-			left = x[1];
+		if (x[0] >= start) {
+			start = x[1];
 			answer++;
 		}
 	}
