@@ -18,7 +18,6 @@ function solution(s1, s2) {
 
 		hash.set(s1[left], (hash.get(s1[left]) || 0) + 1);
 		if (hash.get(s1[left]) === 0) hash.delete(s1[left]);
-
 		left++;
 	}
 
