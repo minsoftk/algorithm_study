@@ -34,3 +34,4 @@ function solution(s) {
 }
 
 console.log(solution('(()(()))(()')); // NO
+console.log(solution('(()())((()))')); // NO
