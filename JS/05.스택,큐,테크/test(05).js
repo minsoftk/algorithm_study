@@ -1,11 +1,17 @@
 function solution(arr, m) {
 	let answer = 0;
+	let queue = Array(21);
+	for (let i = 1; i < queue.length; i++) queue[i] = Array();
 
-	for (let i = 0; i < arr.length - 1; i++) {
-		for (let j = i + 1; j < arr.length; j++) {
-			if (j - i <= m && arr[i].length === arr[j].length) answer++;
+	for (let i = 0; i < arr.length; i++) {
+		const len = arr[i].length;
+		while (queue[len].length && i - queue[len][0] > m) {
+			queue[len].shift();
 		}
+		answer += queue[len].length;
+		queue[len].push(i);
 	}
+
 	return answer;
 }
 

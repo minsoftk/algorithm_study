@@ -1,30 +1,32 @@
-function solution(n, computers) {
-	var answer = 0;
-	let check = Array(computers.length).fill(0);
+function solution(s, e) {
+	function BFS() {
+		queue.push(s);
+		check[s] = 1;
+		let level = 0;
 
-	// 0과 연결된 모든 것 check 처리
-	function DFS(L) {
-		for (let i = 0; i < n; i++) {
-			if (computers[L][i] === 1 && i !== L && check[i] === 0) {
-				check[i] = 1;
-				DFS(i);
+		while (queue.length) {
+			let len = queue.length;
+			for (let i = 0; i < len; i++) {
+				let front = queue.shift();
+
+				for (let temp of [front - 1, front + 1, front + 5]) {
+					if (temp >= 0 && temp <= 10000 && check[temp] === 0) {
+						if (temp === e) return level + 1;
+						queue.push(temp);
+						check[temp] = 1;
+					}
+				}
 			}
+			level++;
 		}
 	}
+	let answer = 0;
+	let queue = [];
+	let check = Array(10001).fill(0);
 
-	for (let i = 0; i < n; i++) {
-		if (check[i] === 0) {
-			answer++;
-			check[i] = 1;
-			DFS(i);
-		}
-	}
+	answer = BFS();
 	return answer;
 }
-console.log(
-	solution(3, [
-		[1, 1, 0],
-		[1, 1, 0],
-		[0, 0, 1],
-	])
-); // 2
+
+console.log(solution(5, 14)); //3
+console.log(solution(8, 3)); //5
