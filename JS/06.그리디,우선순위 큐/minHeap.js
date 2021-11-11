@@ -1,4 +1,4 @@
-class maxHeap {
+class minHeap {
 	constructor() {
 		this.heap = [];
 		this.heap.push(-1e9);

@@ -22,8 +22,10 @@ class maxHeap {
 	}
 	get() {
 		if (this.heap.length === 2) return this.heap.pop();
+		if (this.heap.length === 1) return false;
 		let res = this.heap[1];
 		this.heap[1] = this.heap.pop();
+
 		this.downheap(1, this.heap.length - 1); // pos는 마지막 부모까지만 내려가야 한다.
 		return res;
 	}
