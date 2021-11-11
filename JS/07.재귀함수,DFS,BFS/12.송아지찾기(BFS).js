@@ -14,7 +14,7 @@ function solution(s, e) {
 			//같은 레벨을 탐색한다.
 			for (let i = 0; i < len; i++) {
 				let x = queue.shift(); //Queue 현수의 위치 index가 x에 반환된다.
-				if (x === e) return l + 1; // level은 0부터 시작이므로 +1
+				if (x === e) return l; // level은 0부터 시작이므로 +1
 
 				// 현수의 좌표 x에서 각각의 이동을 temp에 뿌려준다.
 				for (let temp of [x - 1, x + 1, x + 5]) {

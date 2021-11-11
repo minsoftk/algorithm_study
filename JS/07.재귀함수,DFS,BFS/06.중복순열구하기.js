@@ -2,11 +2,11 @@ function solution(n, m) {
 	let answer = [];
 	let tmp = [];
 	function DFS(v) {
-		if (v === n) {
-			answer.push(tmp.splice());
+		if (v === m) {
+			answer.push(tmp.slice());
 			return;
 		} else {
-			for (let i = 1; i <= m; i++) {
+			for (let i = 1; i <= n; i++) {
 				tmp.push(i);
 				DFS(v + 1);
 				tmp.pop();

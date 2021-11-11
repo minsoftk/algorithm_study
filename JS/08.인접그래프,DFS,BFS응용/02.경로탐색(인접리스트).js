@@ -11,7 +11,7 @@ function solution(n, edges) {
 		graph[a].push(b);
 		// graph[b].push(a) // 무방향
 	}
-	console.log(graph);
+
 	function DFS(L) {
 		if (L === n) {
 			answer++;

@@ -1,4 +1,4 @@
-function solution(nums, m) {
+function solution(nums) {
 	let answer;
 	let stack = [];
 
@@ -37,7 +37,7 @@ console.log(
 	])
 ); // 5
 
-function solution(nums, m) {
+function solution(nums) {
 	let answer;
 
 	let arr = nums.sort((a, b) => a[0] - b[0]);
@@ -57,3 +57,18 @@ function solution(nums, m) {
 	answer += e - s;
 	return answer;
 }
+console.log(
+	solution([
+		[1, 3],
+		[2, 5],
+		[7, 10],
+	])
+); // 7
+console.log(
+	solution([
+		[5, 6],
+		[1, 3],
+		[7, 8],
+		[9, 10],
+	])
+); // 5
