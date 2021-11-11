@@ -3,10 +3,10 @@
  * @return {number}
  */
 
-class maxHeap {
+class minHeap {
 	constructor() {
 		this.heap = [];
-		this.heap.push(1e9);
+		this.heap.push(-1e9);
 	}
 	insert(val) {
 		this.heap.push(val);
@@ -16,7 +16,7 @@ class maxHeap {
 	upheap(pos) {
 		let tmp = this.heap[pos];
 		// 부모 노드보다 클 경우
-		while (tmp > this.heap[parseInt(pos / 2)]) {
+		while (tmp < this.heap[parseInt(pos / 2)]) {
 			// insert에서 입력된 새로운 값의 idx에 부모노드의 값을 입력한다.
 			// pos는 부모노드의 위치로 바뀐다.
 			this.heap[pos] = this.heap[parseInt(pos / 2)];
@@ -27,6 +27,8 @@ class maxHeap {
 	}
 	get() {
 		if (this.heap.length === 2) return this.heap.pop();
+		if (this.heap.length === 1) return false;
+
 		let res = this.heap[1];
 		this.heap[1] = this.heap.pop();
 		this.downheap(1, this.heap.length - 1); // pos는 마지막 부모까지만 내려가야 한다.
@@ -39,8 +41,8 @@ class maxHeap {
 			child = pos * 2;
 			// 왼쪽 자식이 더 큰가 오른쪽 자식이 더 큰가
 			// len보다는 작아야 한다.
-			if (child < len && this.heap[child] < this.heap[child + 1]) child++;
-			if (tmp >= this.heap[child]) break;
+			if (child < len && this.heap[child] > this.heap[child + 1]) child++;
+			if (tmp <= this.heap[child]) break;
 			this.heap[pos] = this.heap[child];
 			pos = child;
 		}
@@ -53,25 +55,33 @@ class maxHeap {
 
 function solution(events) {
 	let answer = 0;
-	events.sort((a, b) => {
-		if (a[0] == b[0]) return a[1] - b[1];
-		return a[0] - b[0];
-	});
+	let heap = new minHeap();
 
-	let index = 0;
-	let pq = new MinHeap();
-	for (let day = 1; day < 10e5; day++) {
-		while (index < events.length && events[index][0] <= day) {
-			pq.insert(events[index++][1]);
-		}
-		let top = pq.get();
-		while (top && top < day) {
-			top = pq.get();
-		}
+	events.sort((a, b) => a[1] - b[1]);
+	let end = events[events.length - 1][1];
+	// 끝 부분 초기화
 
-		answer += day <= top ? 1 : 0;
+	events.sort((a, b) => b[0] - a[0]);
+	let start = events[events.length - 1][0];
+
+	// 시작 부분 초기화
+	// 시작 부분 초기화한대로 events 진행
+
+	for (let i = start; i <= end; i++) {
+		// 시작부터 끝까지
+		while (events.length && events[events.length - 1][0] === i) {
+			// 현재 날짜에 시작하는 기간을 전부 넣어줌
+			heap.insert(events.pop()[1]);
+		}
+		let tmp = heap.get();
+		// 기준값 하나 빼줌
+		while (heap.size() && tmp < i) tmp = heap.get();
+		// 마감이 가장 빠른 기간이지만, 마감이 지난 것일 경우, 다시 빼줌(while)
+		if (tmp >= i) {
+			answer++;
+		}
+		// 기간에 부합할 경우에만 개수 증가
 	}
-
 	return answer;
 }
 
@@ -105,3 +115,21 @@ console.log(
 	])
 ); // 7
 console.log(solution([[1, 100000]])); // 1
+console.log(
+	solution([
+		[26, 27],
+		[24, 26],
+		[1, 4],
+		[1, 2],
+		[3, 6],
+		[2, 6],
+		[9, 13],
+		[6, 6],
+		[25, 27],
+		[22, 25],
+		[20, 24],
+		[8, 8],
+		[27, 27],
+		[30, 32],
+	])
+); // 14
