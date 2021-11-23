@@ -1,0 +1,1 @@
+if (temp.length === word.length) 
