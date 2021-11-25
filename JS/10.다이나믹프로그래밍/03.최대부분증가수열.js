@@ -17,6 +17,7 @@ function solution(nums) {
 		}
 		dy[i] = max + 1;
 		answer = Math.max(answer, dy[i]);
+		console.log(dy);
 	}
 	return answer;
 }
