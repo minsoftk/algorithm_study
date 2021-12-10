@@ -8,7 +8,7 @@ function sol(n) {
 
 	let k = [];
 	k[0] = 1;
-	for (var i = 1; i < n; i++) {
+	for (let i = 1; i < n; i++) {
 		k[i] = Math.min(k[p2] * 2, Math.min(k[p3] * 3, k[p5] * 5));
 		if (k[i] == k[p2] * 2) p2++;
 		if (k[i] == k[p3] * 3) p3++;
