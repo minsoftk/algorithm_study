@@ -12,62 +12,58 @@ for (let i = 1; i < input.length; i++) {
 
 // console.log(m, n, k, arr);
 
-function solution(m, n, k, arr) {
-	let dx = [-1, 0, 1, 0];
-	let dy = [0, 1, 0, -1];
-
-	// DFS로는 어떻게 접근을 해야될지 잘 모르겠다.
-	function BFS() {
-		let cnt = 1;
+const solution = (m, n, k, arr) => {
+	const BFS = () => {
+		let cnt = 0;
 		while (queue.length) {
 			let front = queue.shift();
 			for (let i = 0; i < 4; i++) {
 				let xx = front[0] + dx[i];
 				let yy = front[1] + dy[i];
-				if (xx >= 0 && yy >= 0 && xx < n && yy < m && check[xx][yy] === 0) {
-					cnt++;
+				if (xx >= 0 && xx < m && yy >= 0 && yy < n && map[xx][yy] === 0) {
 					queue.push([xx, yy]);
-					check[xx][yy] = 1;
+					map[xx][yy] = 1;
+					cnt += 1;
 				}
 			}
 		}
+		if (!cnt) return 1;
 		return cnt;
-	}
+	};
 
-	let answer = [];
+	let answer = 0;
+	let dy = [-1, 0, 1, 0];
+	let dx = [0, 1, 0, -1];
+	let map = Array(m);
+	for (let i = 0; i < map.length; i++) map[i] = Array(n).fill(0);
 
-	let check = Array(n);
-	for (let i = 0; i < check.length; i++) check[i] = Array(m).fill(0);
-
-	for (let x of arr) {
-		for (let i = x[0]; i < x[2]; i++) {
-			for (let j = x[1]; j < x[3]; j++) {
-				check[i][j] = 1;
+	for (let i = 0; i < k; i++) {
+		let pos = arr[i];
+		// console.log(pos);
+		for (let j = pos[1]; j < pos[3]; j++) {
+			for (let k = pos[0]; k < pos[2]; k++) {
+				map[j][k] = 1;
 			}
 		}
 	}
+
 	let queue = [];
-	let num = 0;
-	for (let i = 0; i < n; i++) {
-		for (let j = 0; j < m; j++) {
-			if (check[i][j] === 0) {
-				num++;
-				check[i][j] = 1;
+	let count = [];
+	for (let i = 0; i < m; i++) {
+		for (let j = 0; j < n; j++) {
+			if (map[i][j] === 0) {
 				queue.push([i, j]);
-				answer.push(BFS());
+				count.push(BFS());
+				answer += 1;
 			}
 		}
 	}
-	answer.sort((a, b) => a - b);
 
-	// 입출력이 좀 짜증남
-	let temp = '';
-	temp += String(num) + '\n';
-	for (let x of answer) {
-		temp += x + ' ';
-	}
-	return temp;
-}
+	count.sort((a, b) => a - b);
+	answer += '\n';
+	count.forEach((el) => (answer += el + ' '));
+	return answer;
+};
 console.log(solution(m, n, k, arr));
 // 3
 // 1 7 13

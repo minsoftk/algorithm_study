@@ -32,8 +32,7 @@ function solution(valNum, val) {
 		let flag = false;
 		let len = 0;
 		for (let j = 0; j < valNum[i]; j++) {
-			console.log('test1', val[i][j].slice(0, len));
-			console.log('test2', val[i][j - 1]);
+			// console.log('test1', val[i][j].slice(0, len), 'test2', val[i][j - 1]);
 			if (val[i][j].slice(0, len) === val[i][j - 1]) {
 				flag = true;
 				break;
