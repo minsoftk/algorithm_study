@@ -1,8 +1,3 @@
-const { count } = require('console');
-const {
-	SSL_OP_TLS_ROLLBACK_BUG,
-	SSL_OP_NETSCAPE_CHALLENGE_BUG,
-} = require('constants');
 const fs = require('fs');
 const filePath =
 	process.platform === 'linux' ? '/dev/stdin' : './boj/input.txt';
