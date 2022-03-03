@@ -38,3 +38,5 @@ for (let i = 1; i < arr.length; i++) {
 	console.log(dy);
 }
 console.log(dy.length);
+
+//https://jason9319.tistory.com/113

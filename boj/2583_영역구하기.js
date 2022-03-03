@@ -1,6 +1,4 @@
-const { count, timeStamp } = require('console');
 const fs = require('fs');
-const { DefaultSerializer } = require('v8');
 const filePath =
 	process.platform === 'linux' ? '/dev/stdin' : './boj/input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');

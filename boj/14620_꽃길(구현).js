@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { deflateSync } = require('zlib');
 const filePath =
 	process.platform === 'linux' ? '/dev/stdin' : './boj/input.txt';
 const input = fs.readFileSync(filePath).toString().trim().split('\n');
@@ -16,56 +15,47 @@ for (let i = 0; i < n; i++) check[i] = Array(n).fill(0);
 
 function sol() {
 	let sum = 0;
-	let flag = 0;
+	let cnt = 0;
 	let queue = [];
 	for (let i = 0; i < n; i++) {
 		for (let j = 0; j < n; j++) {
 			sum = map[i][j];
-			flag = 0;
+			cnt = 0;
 			for (let k = 0; k < 4; k++) {
 				let xx = i + dx[k];
 				let yy = j + dy[k];
 				if (checkBorder(xx, yy)) {
 					sum += map[xx][yy];
-					flag += 1;
+					cnt += 1;
 				}
 			}
 
 			// 4방향으로 나갈 수 없을 경우
-			if (flag < 4) continue;
+			if (cnt < 4) continue;
 
+			// 4방향으로 나갈 수 있는 i,j 좌표 push
 			queue.push([i, j, sum]);
 		}
 	}
 
-	queue.sort((a, b) => a[0] - b[0]);
-	// console.log('here ', queue);
-	// queue = [
-	// 	[1, 1, 5],
-	// 	[1, 4, 5],
-	// 	[3, 3, 5],
-	// 	[4, 1, 3],
-	// ];
-
-	// let answer = [];
 	let temp = [];
 	let answer = 1e9;
 	let checkQueue = Array(queue.length).fill(0);
 	DFS(0, 0);
 	console.log(answer);
-	// console.log('here ', check);
+
 	function DFS(L, idx) {
 		if (L === 3) {
-			let d = 0;
+			let sum = 0;
 			for (let i = 0; i < temp.length; i++) {
-				d += temp[i][2];
+				sum += temp[i][2];
 			}
-			answer = Math.min(answer, d);
+			answer = Math.min(answer, sum);
 			return;
 		} else {
 			for (let i = idx; i < queue.length; i++) {
 				let [x, y, total] = queue[i];
-				// console.log('here ', queue);
+
 				if (checkQueue[i] === 0) {
 					if (checkFlower(x, y)) {
 						check[x][y] = 1;
@@ -110,19 +100,8 @@ function checkFlower(x, y) {
 	else return false;
 }
 
-function uncheckFlower(x, y) {
-	check[x][y] = 0;
-	for (let i = 0; i < 4; i++) {
-		let xx = x + dx[i];
-		let yy = y + dy[i];
-		check[xx][yy] = 0;
-	}
-}
-
 // 그리디로는 못푸는듯. DFS 방법을 생각해봐야 하나?
 // 첫번째가 최소 값을 가지더라도 다음 요소를 선택하지 못하는 경우가 발생했을 때
 // 최소값이 달라지는 듯 하다.
-let answer = 1e9;
-let temp = 0;
 
 sol();
