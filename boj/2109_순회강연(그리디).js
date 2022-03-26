@@ -62,18 +62,17 @@ class maxHeap {
 	}
 }
 
-// day가 같은 경우가 있으므로 내리차순 정렬을 해준다.
+// day가 같은 경우가 있으므로 내차순 정렬을 해준다.
 arr.sort((a, b) => {
 	if (a[1] === b[1]) return b[0] - a[0];
 	else return b[1] - a[1];
 });
 
-// console.log(arr);
-
 if (n === 0) {
 	console.log(0);
 	return;
 }
+console.log('here ', arr);
 
 // day를 내림차순으로 해준다. idx를 기준으로 탐색한다.
 let heap = new maxHeap();
