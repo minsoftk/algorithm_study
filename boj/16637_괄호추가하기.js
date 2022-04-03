@@ -38,11 +38,12 @@ function DFS(idx, res) {
 	}
 	let oper = idx === 0 ? '+' : state[idx - 1];
 	if (idx + 2 < n) {
-		// (1*2) * 4 의 경우
+		//1. (1*2) * 4 의 경우
 		let bracket = cal(state[idx], state[idx + 2], state[idx + 1]);
 		DFS(idx + 4, cal(res, bracket, oper));
 	}
 	// 괄호가 없는 경우
+	// 1 * 2
 	DFS(idx + 2, cal(res, state[idx], oper));
 }
 
@@ -51,6 +52,7 @@ function solution(n, state) {
 	DFS(0, 0);
 	return max_cal;
 
+	// 1*8
 	// for (let i = 0; i < state.length; i++) {
 	// 	if (
 	// 		i + 3 <= state.length - 1 &&
