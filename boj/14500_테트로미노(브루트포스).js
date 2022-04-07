@@ -27,6 +27,7 @@ const t2 = [
 	[1, 1],
 	[2, 1],
 ];
+
 const t3 = [
 	[0, 0],
 	[0, 1],
@@ -105,6 +106,7 @@ function solution(n, m, arr) {
 				answer = Math.max(axios_sum, answer);
 				axios_sum = 0;
 				sum = 0;
+
 				// 회전
 				// x가 늘어나야 되는 값을 y에 더한다.
 				for (let j = 0; j < tech[i].length; j++) {
@@ -117,6 +119,7 @@ function solution(n, m, arr) {
 						break;
 					}
 				}
+
 				answer = Math.max(sum, answer);
 
 				// 회전 대칭

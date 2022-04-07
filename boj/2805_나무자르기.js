@@ -51,14 +51,11 @@ function count(arr, mid) {
 	return sum;
 }
 function solution(n, m, arr) {
-	arr.sort((a, b) => a - b);
-
 	let left = 0,
 		right = 20e10;
 	let answer = 0;
 	while (left <= right) {
 		let mid = Math.floor((left + right) / 2);
-
 		if (count(arr, mid) >= m) {
 			answer = mid;
 			left = mid + 1;

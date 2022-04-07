@@ -1,6 +1,4 @@
-const { count, timeStamp } = require('console');
 const fs = require('fs');
-const { DefaultSerializer } = require('v8');
 const filePath =
 	process.platform === 'linux' ? '/dev/stdin' : './boj/input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');
@@ -10,10 +8,6 @@ let arr = [];
 for (let i = 2; i < input.length; i++) {
 	arr.push(input[i].trim().split(' ').map(Number));
 }
-
-// console.log(m, n, k, arr);
-// console.log(n, arr);
-// console.log(n, m, r, c, d, arr);
 
 function solution(n, m, robot, arr) {
 	let answer = 1; // 로봇이 던져진 곳은 청소한 것으로 치므로 1로 선언
