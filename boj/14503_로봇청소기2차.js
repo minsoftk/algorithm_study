@@ -72,7 +72,6 @@ function solution(n, m, robot, arr) {
 		}
 
 		// 만약 4번 실행됐을 경우, 뒤로 이동
-
 		if (turnCnt === 4) {
 			let xx = pos[0] + back[d][0];
 			let yy = pos[1] + back[d][1];
