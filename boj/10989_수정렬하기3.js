@@ -1,6 +1,6 @@
 const filePath =
   process.platform === 'linux' ? '/dev/stdin' : './boj/input.txt';
-const input = require('fs')
+const [n, ...input] = require('fs')
   .readFileSync(filePath)
   .toString()
   .trim()
@@ -8,24 +8,32 @@ const input = require('fs')
   .map(Number);
 
 function solution(input) {
-  const [n, ...lists] = input;
-  const memo = Array(10001).fill(0);
+  const sortArray = input.sort((a, b) => a - b);
 
-  input.forEach((elem) => {
-    memo[elem] += 1;
+  const frequencyHash = new Map();
+  sortArray.forEach((element) => {
+    frequencyHash.set(element, (frequencyHash.get(element) || 0) + 1);
   });
 
-  const res = [];
-  let cnt = 0;
-  let idx = 1;
-  while (cnt + memo[idx] < n) {
-    cnt += memo[idx];
-    for (let i = 0; i < memo[idx]; i += 1) res.push(idx);
-    idx += 1;
-  }
+  const avg = Math.round(
+    Math.round(
+      Number(
+        (
+          sortArray.reduce((prev, cur) => prev + cur, 0) / sortArray.length
+        ).toFixed(1)
+      )
+    )
+  );
+  const middleValue = sortArray[Math.floor(sortArray.length / 2)];
 
-  for (let i = 0; i <= cnt + memo[idx] - n; i += 1) res.push(idx);
-  return res.join('\n');
+  const frequencyArr = [...frequencyHash];
+  const frequencyValue =
+    frequencyArr.length !== 1
+      ? frequencyArr.sort((a, b) => a[0] - b[0])[1][0]
+      : frequencyArr[0][0];
+  const len = Math.abs(sortArray[sortArray.length - 1] - sortArray[0]);
+
+  return [avg, middleValue, frequencyValue, len].join('\n');
 }
 
 console.log(solution(input));
