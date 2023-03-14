@@ -1,7 +1,7 @@
-const arr = Array(10).fill(0);
+const arr = Array(4).fill(0);
 
 for (let i = 0; i < arr.length; i += 1) {
-  arr[i] = Math.floor(Math.random(0, 1000) * 1000 + 1);
+  arr[i] = Math.floor(Math.random() * 1000 + 1);
 }
 
 /**
@@ -9,21 +9,19 @@ for (let i = 0; i < arr.length; i += 1) {
  * @param {Array} arr
  * @return {Array}
  */
-function bubbleSort(arr) {
-  for (let i = 0; i < arr.length - 1; i += 1) {
-    let swap = false;
-    for (let j = 0; j <= arr.length - i - 1; j += 1) {
-      if (arr[j] > arr[j + 1]) {
+function insertionSort(arr) {
+  // 5 3 2 4
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (arr[j - 1] > arr[j]) {
         const temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swap = true;
-      }
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+      } else break;
     }
-    if (!swap) break;
   }
 
   return arr;
 }
 
-console.log(bubbleSort(arr));
+console.log(insertionSort(arr));

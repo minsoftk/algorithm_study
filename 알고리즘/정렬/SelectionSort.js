@@ -9,21 +9,19 @@ for (let i = 0; i < arr.length; i += 1) {
  * @param {Array} arr
  * @return {Array}
  */
-function bubbleSort(arr) {
+function selectionSort(arr) {
   for (let i = 0; i < arr.length - 1; i += 1) {
-    let swap = false;
-    for (let j = 0; j <= arr.length - i - 1; j += 1) {
-      if (arr[j] > arr[j + 1]) {
-        const temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swap = true;
+    let min = i;
+    for (let j = i + 1; j < arr.length; j += 1) {
+      if (arr[min] > arr[j]) {
+        min = j;
       }
     }
-    if (!swap) break;
+    const temp = arr[i];
+    arr[i] = arr[min];
+    arr[min] = temp;
   }
-
   return arr;
 }
 
-console.log(bubbleSort(arr));
+console.log(selectionSort(arr));
