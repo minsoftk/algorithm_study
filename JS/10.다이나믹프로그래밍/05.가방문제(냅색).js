@@ -7,6 +7,7 @@ function solution(arr, m) {
 	for (let i = 0; i < arr.length; i++) {
 		for (let j = arr[i][0]; j <= m; j++) {
 			dy[j] = Math.max(dy[j], dy[j - arr[i][0]] + arr[i][1]);
+			console.log('here ', dy[j]);
 		}
 	}
 	answer = dy[m];
