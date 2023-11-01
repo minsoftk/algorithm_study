@@ -13,43 +13,31 @@ function solution(input) {
   for (let i = 0; i < n; i += 1) {
     const num = Number(input[idx]);
     const nextIdx = Math.ceil(num / 10);
-    const arr = input.slice(idx + 1, idx + 1 + nextIdx);
+    let arr = input.slice(idx + 1, idx + 1 + nextIdx);
 
-    const temp = arr.join(' ').split(' ').map(Number);
-    // console.log('temp:', temp);
+    arr = arr.join(' ').split(' ').map(Number);
 
     // 중앙값 개수
     const resultNum = Math.ceil(num / 2);
     answer.push(resultNum);
 
     // 중앙값 계산
-    let result = 0;
     let resultArray = [];
-
-    // console.log('resultNum, temp:', i, resultNum, temp);
-    for (let j = 0; j < temp.length; j += 1) {
-      if (resultArray.length === 10) {
-        answer.push(resultArray);
-        resultArray = [];
-      }
-      result += temp[j];
-      // if (j === 2 && ) {
-      // console.log('result:', result);
-      // }
-      if (i === 2) {
-        console.log('result:', j + 1, result);
-      }
-      if ((j + 1) % 2 !== 0) {
-        resultArray.push(Math.ceil(result / (j + 1)));
+    let tempArray = [];
+    for (let j = 0; j < arr.length; j += 1) {
+      tempArray.push(arr[j]);
+      if ((j + 1) % 2 === 1) {
+        tempArray.sort((a, b) => a - b);
+        resultArray.push(tempArray[Math.floor(tempArray.length / 2)]);
       }
     }
-    answer.push(resultArray);
+
+    answer.push(resultArray.join(' '));
 
     idx += 1 + nextIdx;
   }
 
-  console.log('answer:', answer);
-  // return answer.map((elem) => elem.map(el=> el.join(' ')).join('\n');
+  return answer.join('\n');
 }
 
 console.log(solution(input));
