@@ -40,17 +40,46 @@ class MinHeap {
     this.heap[indexTwo] = temp;
   }
 
-  peek() {
-    if (this.heap.length === 0) {
-      return null;
-    }
-    return this.heap[0];
-  }
-
   // Removing an element will remove the
   // top element with highest priority then
   // heapifyDown will be called
-  remove() {
+
+  heapifyUp() {
+    let index = this.heap.length - 1;
+    while (
+      this.hasParent(index) &&
+      this.parent(index)[0] > this.heap[index][0]
+    ) {
+      this.swap(this.getParentIndex(index), index);
+      index = this.getParentIndex(index);
+    }
+  }
+
+  insert(item) {
+    this.heap.push(item);
+    this.heapifyUp();
+  }
+
+  heapifyDown() {
+    let index = 0;
+    while (this.hasLeftChild(index)) {
+      let smallerChildIndex = this.getLeftChildIndex(index);
+      if (
+        this.hasRightChild(index) &&
+        this.rightChild(index)[0] < this.leftChild(index)[0]
+      ) {
+        smallerChildIndex = this.getRightChildIndex(index);
+      }
+      if (this.heap[index][0] < this.heap[smallerChildIndex][0]) {
+        break;
+      } else {
+        this.swap(index, smallerChildIndex);
+      }
+      index = smallerChildIndex;
+    }
+  }
+
+  pop() {
     if (this.heap.length === 0) {
       return null;
     }
@@ -61,38 +90,6 @@ class MinHeap {
     return item;
   }
 
-  add(item) {
-    this.heap.push(item);
-    this.heapifyUp();
-  }
-
-  heapifyUp() {
-    let index = this.heap.length - 1;
-    while (this.hasParent(index) && this.parent(index) > this.heap[index]) {
-      this.swap(this.getParentIndex(index), index);
-      index = this.getParentIndex(index);
-    }
-  }
-
-  heapifyDown() {
-    let index = 0;
-    while (this.hasLeftChild(index)) {
-      let smallerChildIndex = this.getLeftChildIndex(index);
-      if (
-        this.hasRightChild(index) &&
-        this.rightChild(index) < this.leftChild(index)
-      ) {
-        smallerChildIndex = this.getRightChildIndex(index);
-      }
-      if (this.heap[index] < this.heap[smallerChildIndex]) {
-        break;
-      } else {
-        this.swap(index, smallerChildIndex);
-      }
-      index = smallerChildIndex;
-    }
-  }
-
   printHeap() {
     var heap = ` ${this.heap[0]} `;
     for (var i = 1; i < this.heap.length; i++) {
@@ -100,27 +97,31 @@ class MinHeap {
     }
     console.log(heap);
   }
+
+  peek() {
+    if (this.heap.length === 0) {
+      return null;
+    }
+    return this.heap[0];
+  }
 }
 
 // Creating the Heap
-var heap = new MinHeap();
+const heap = new MinHeap();
 
-// Adding The Elements
-heap.add(10);
-heap.add(15);
-heap.add(30);
-heap.add(40);
-heap.add(50);
-heap.add(100);
-heap.add(40);
+const temp = [
+  [-1, 0],
+  [-1, 0],
+  [1, 2],
+  [1, 3],
+  [-2, 4],
+  [2, 5],
+];
+temp.forEach((elem) => heap.insert(elem));
 
-// Printing the Heap
-heap.printHeap();
-
-// Peeking And Removing Top Element
-console.log(heap.peek());
-console.log(heap.remove());
-
-// Printing the Heap
-// After Deletion.
-heap.printHeap();
+console.log(heap.pop());
+console.log(heap.pop());
+console.log(heap.pop());
+console.log(heap.pop());
+console.log(heap.pop());
+console.log(heap.pop());
