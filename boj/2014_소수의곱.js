@@ -54,10 +54,7 @@ class MinHeap {
 
   heapifyUp() {
     let index = this.heap.length - 1;
-    while (
-      this.hasParent(index) &&
-      this.parent(index)[0] > this.heap[index][0]
-    ) {
+    while (this.hasParent(index) && this.parent(index) > this.heap[index]) {
       this.swap(this.getParentIndex(index), index);
       index = this.getParentIndex(index);
     }
@@ -74,11 +71,11 @@ class MinHeap {
       let smallerChildIndex = this.getLeftChildIndex(index);
       if (
         this.hasRightChild(index) &&
-        this.rightChild(index)[0] < this.leftChild(index)[0]
+        this.rightChild(index) < this.leftChild(index)
       ) {
         smallerChildIndex = this.getRightChildIndex(index);
       }
-      if (this.heap[index][0] < this.heap[smallerChildIndex][0]) {
+      if (this.heap[index] < this.heap[smallerChildIndex]) {
         break;
       } else {
         this.swap(index, smallerChildIndex);
@@ -112,18 +109,38 @@ class MinHeap {
     }
     return this.heap[0];
   }
+  length() {
+    return this.heap.length;
+  }
 }
 
 function solution(input) {
   const [k, n] = info.trim().split(' ').map(Number);
   const arr = input.split(' ').map(Number);
+
   const heap = new MinHeap();
 
+  let visited = new Set();
+  let maxValue = Math.max(...arr);
   for (let i = 0; i < arr.length; i += 1) {
     heap.insert(arr[i]);
+    visited.add(arr[i]);
   }
 
-  return 0;
+  for (let i = 0; i < n - 1; i += 1) {
+    const top = heap.pop();
+
+    for (let j = 0; j < arr.length; j += 1) {
+      const value = top * arr[j];
+      if (heap.length() >= n && maxValue < value) continue;
+      if (!visited.has(value)) {
+        heap.insert(value);
+        maxValue = Math.max(maxValue, value);
+        visited.add(value);
+      }
+    }
+  }
+  return heap.pop();
 }
 
 console.log(solution(input));
