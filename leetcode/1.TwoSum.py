@@ -1,5 +1,5 @@
 def twoSum(nums, target):
-    dics = {nums[x]:x for x in range(0,len(nums))}
+    dics = {val: i for i, val in enumerate(nums)}
     for i, val in enumerate(nums):
         find_value = target - val
         if find_value in dics.keys() and i != dics[find_value]:
