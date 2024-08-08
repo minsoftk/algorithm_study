@@ -32,7 +32,7 @@ class Solution:
                 ny = y + dy
                 if self.checkValid(nx, ny, n) and grid[nx][ny] == 0 and not visited[nx][ny]:
                     if (nx == n-1 and ny == n-1):
-                        shortest_cnt = min(shortest_cnt, val+1)
+                        return val+1
                     queue.append((nx, ny, val+1))
                     visited[nx][ny] = True
 

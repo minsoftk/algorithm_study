@@ -21,7 +21,7 @@ function shortestPathBinaryMatrix(grid: number[][]): number {
 			const nx = x + dx[i];
 			const ny = y + dy[i];
 			if (nx === n - 1 && ny === n - 1) {
-				pathCnt = Math.min(pathCnt, count + 1);
+				return count + 1;
 			}
 			if (checkValid(nx, ny, n) && grid[nx][ny] === 0 && !visited[nx][ny]) {
 				queue.push([nx, ny, count + 1]);
