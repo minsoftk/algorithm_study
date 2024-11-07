@@ -7,7 +7,6 @@ ans = 0
 for i in range(1, N + 1):
     for comb in combinations(arr, i):
         print(f"==>> comb: {comb}")
-        print(sum(comb) == S)
         if sum(comb) == S:
             ans += 1
 
