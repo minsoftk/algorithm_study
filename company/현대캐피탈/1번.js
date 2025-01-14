@@ -41,13 +41,13 @@ function solution(passes, minutes) {
 // 가장 작은 적은 금액을 낼 수 있는 주차권의 금액을 반환
 
 // 하나의 요소는 [ 기본 요금, 기본 시간, 추가 시간, 추가 요금 ]
-passes = [
-	[5000, 120, 20, 1000],
-	[3000, 30, 20, 3000],
-];
-minutes = 150;
-
-solution(passes, minutes); // result: 7000
+solution(
+	[
+		[5000, 120, 20, 1000],
+		[3000, 30, 20, 3000],
+	],
+	150
+); // result: 7000
 
 solution(
 	[
