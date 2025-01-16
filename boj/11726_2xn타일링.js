@@ -13,3 +13,22 @@ function solution(n) {
 }
 
 console.log(solution(+input)); // 2
+
+
+// top-down
+function solution2(n) {
+	const dp = Array(n + 1).fill(-1);
+  [dp[1], dp[2]] = [1, 2];
+
+	function recursive(n){
+    if (n === 1 || n=== 2)return n;
+    if (dp[n] !== -1) return dp[n];
+    
+    return dp[n] = (recursive(n - 1) + recursive(n - 2)) % 10007;
+  }
+
+  recursive(n)
+	return dp[n];
+}
+
+console.log(solution2(+input)); // 2
