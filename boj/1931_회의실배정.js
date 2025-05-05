@@ -1,6 +1,5 @@
 const fs = require('fs');
-const filePath =
-	process.platform === 'linux' ? '/dev/stdin' : './boj/input.txt';
+const filePath = process.platform === 'linux' ? '/dev/stdin' : 'input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 let n = Number(input[0].trim());
@@ -28,4 +27,24 @@ function solution(n, work) {
 	}
 	return answer;
 }
-console.log(solution(n, work)); // 4
+// console.log(solution(n, work)); // 4
+
+// 2025.04.13
+function solution2(n, work) {
+	const workSorted = work.sort((a, b) => {
+		if (a[1] === b[1]) return a[0] - b[0];
+		return a[1] - b[1];
+	});
+
+	let cnt = 1;
+	let lastTime = workSorted[0][1];
+	for (let i = 1; i < n; i += 1) {
+		if (lastTime <= workSorted[i][0]) {
+			lastTime = workSorted[i][1];
+			cnt += 1;
+		}
+	}
+	return cnt;
+}
+
+console.log(solution2(n, work)); // 4
